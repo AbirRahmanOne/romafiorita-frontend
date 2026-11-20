@@ -1,0 +1,14 @@
+/* Storefront CSS variables — mirror of storefront-preset for non-Tailwind usage. */
+:root {
+  --color-accent: #c2185b;
+  --color-accent-300: #f48fb1;
+  --color-accent-700: #a3134c;
+  --color-accent-soft: #fce4ec;
+  --color-bg: #fff7fa;
+  --color-surface: #ffffff;
+  --color-ink: #1d1b1a;
+  --color-text: #3a1f2b;
+  --color-muted: #6b4e5a;
+  --color-divider: #f3d1de;
+  --color-success: #2e7d5b;
+}
