@@ -1,0 +1,11 @@
+{
+  "extends": "@rf/config/tsconfig.react.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "include": ["src", "vite.config.ts", "eslint.config.js"]
+}
