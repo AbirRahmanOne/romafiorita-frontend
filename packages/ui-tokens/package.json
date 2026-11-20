@@ -1,0 +1,13 @@
+{
+  "name": "@rf/ui-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "exports": {
+    "./storefront-preset": "./storefront-preset.js",
+    "./admin-preset": "./admin-preset.js",
+    "./storefront.css": "./storefront.css",
+    "./admin.css": "./admin.css"
+  },
+  "files": ["*.js", "*.css"]
+}

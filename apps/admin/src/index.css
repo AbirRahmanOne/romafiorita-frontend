@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg font-sans text-text antialiased;
+  }
+}
+
+@layer components {
+  /* Theme-local button classes consumed by the shared <Button> primitive. */
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium transition;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    @apply disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-primary font-semibold text-white hover:bg-primary-hover;
+  }
+  .btn-secondary {
+    @apply border border-card bg-surface text-text hover:bg-bg;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-primary hover:text-primary-hover;
+  }
+  .btn-icon {
+    @apply min-w-11 bg-transparent px-0;
+  }
+  .card {
+    @apply rounded-card border border-card bg-surface;
+  }
+}

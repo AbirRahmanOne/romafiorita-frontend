@@ -1,0 +1,161 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Roma Fiorita API (placeholder)",
+    "version": "0.0.0",
+    "description": "Committed stub so the typed client generates before the backend ships its real openapi.json. Regenerate with `pnpm gen:api` pointed at OPENAPI_URL. Gaps tracked in docs/api-gaps.md."
+  },
+  "servers": [{ "url": "https://api.romafiorita.com" }],
+  "paths": {
+    "/v1/catalog/products": {
+      "get": {
+        "operationId": "listProducts",
+        "parameters": [
+          { "name": "occasion", "in": "query", "schema": { "type": "string" } },
+          { "name": "category", "in": "query", "schema": { "type": "string" } },
+          { "name": "locale", "in": "query", "schema": { "type": "string", "enum": ["it", "en"] } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["items"],
+                  "properties": {
+                    "items": { "type": "array", "items": { "$ref": "#/components/schemas/Product" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/catalog/products/{slug}": {
+      "get": {
+        "operationId": "getProduct",
+        "parameters": [{ "name": "slug", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "Product",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Product" } } }
+          },
+          "404": { "description": "Not found" }
+        }
+      }
+    },
+    "/v1/delivery/check": {
+      "get": {
+        "operationId": "checkDelivery",
+        "parameters": [
+          { "name": "postcode", "in": "query", "required": true, "schema": { "type": "string" } },
+          { "name": "date", "in": "query", "schema": { "type": "string", "format": "date" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delivery options",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/DeliveryCheck" } } }
+          }
+        }
+      }
+    },
+    "/v1/cart/quote": {
+      "post": {
+        "operationId": "quoteCart",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CartQuoteRequest" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "Server-calculated totals",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CartQuote" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Variant": {
+        "type": "object",
+        "required": ["id", "tier", "price_cents", "active", "is_default"],
+        "properties": {
+          "id": { "type": "string" },
+          "tier": { "type": "string", "enum": ["STANDARD", "PREMIUM", "LUXURY"] },
+          "price_cents": { "type": "integer" },
+          "description_it": { "type": "string" },
+          "description_en": { "type": "string" },
+          "images": { "type": "array", "items": { "type": "string" } },
+          "active": { "type": "boolean" },
+          "is_default": { "type": "boolean" },
+          "same_day": { "type": "boolean" },
+          "exact_time": { "type": "boolean" }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "required": ["slug", "name", "variants"],
+        "properties": {
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "occasion": { "type": "string" },
+          "category": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "images": { "type": "array", "items": { "type": "string" } },
+          "variants": { "type": "array", "items": { "$ref": "#/components/schemas/Variant" } }
+        }
+      },
+      "DeliveryCheck": {
+        "type": "object",
+        "required": ["zone", "types", "fees"],
+        "properties": {
+          "zone": { "type": "string", "enum": ["ROME", "NATIONAL"] },
+          "types": { "type": "array", "items": { "type": "string", "enum": ["standard", "window", "exact", "courier"] } },
+          "fees": {
+            "type": "object",
+            "properties": {
+              "standard_cents": { "type": "integer" },
+              "window_cents": { "type": "integer" },
+              "exact_cents": { "type": "integer" }
+            }
+          },
+          "cutoff": { "type": "string", "format": "date-time", "nullable": true }
+        }
+      },
+      "CartItem": {
+        "type": "object",
+        "required": ["variant_id", "quantity"],
+        "properties": {
+          "variant_id": { "type": "string" },
+          "quantity": { "type": "integer" },
+          "addons": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "CartQuoteRequest": {
+        "type": "object",
+        "required": ["items"],
+        "properties": {
+          "items": { "type": "array", "items": { "$ref": "#/components/schemas/CartItem" } },
+          "postcode": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "delivery_type": { "type": "string" }
+        }
+      },
+      "CartQuote": {
+        "type": "object",
+        "required": ["subtotal_cents", "delivery_cents", "total_cents", "currency"],
+        "properties": {
+          "subtotal_cents": { "type": "integer" },
+          "delivery_cents": { "type": "integer" },
+          "time_fee_cents": { "type": "integer" },
+          "total_cents": { "type": "integer" },
+          "currency": { "type": "string" }
+        }
+      }
+    }
+  }
+}

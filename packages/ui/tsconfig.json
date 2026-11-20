@@ -1,0 +1,8 @@
+{
+  "extends": "@rf/config/tsconfig.react.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["react"]
+  },
+  "include": ["src"]
+}

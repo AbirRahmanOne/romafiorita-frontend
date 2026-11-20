@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Brand Name] — Flower delivery in Italy, from anywhere in the world</title>
+<meta name="description" content="Hand-made bouquets delivered all over Italy. Same-day in [City] at the exact minute you choose, with a photo of your real bouquet before delivery.">
+<link rel="alternate" hreflang="en" href="/en/">
+<link rel="alternate" hreflang="it" href="/it/">
+<link rel="alternate" hreflang="x-default" href="/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Tokens ===== */
+:root{
+  --ink:#0F0F0F; --ink-2:#2B2B2B; --paper:#FFFFFF; --stone:#F4F1EC; --stone-line:#D9D2C8;
+  --line:#E5E0D8; --muted:#5E5A55; --body:#3D3934; --soft:#CFC9C1; --faint:#C9C3BA;
+  --accent:#A3324F;
+  --ph-1:#2E2926; --ph-2:#DCCFC6; --ph-3:#E9E1CF; --ph-4:#E3E6DD; --ph-5:#DFE2E4; --ph-6:#ECE6DF; --ph-7:#E8D9A8;
+  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --wrap:1360px; --gutter:clamp(16px,4vw,56px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.01em}
+.label{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.muted{color:var(--muted)}
+.accent{color:var(--accent)}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(42px,5vw,72px);line-height:1;margin:0;letter-spacing:-.01em}
+.section{margin-top:clamp(64px,9vw,120px)}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+.link-line{text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 30px;border:0;border-radius:0;font:600 13px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;cursor:pointer;text-align:center}
+.btn--ink{background:var(--ink);color:#fff}.btn--ink:hover{background:var(--ink-2);color:#fff}
+.btn--paper{background:#fff;color:var(--ink)}.btn--paper:hover{background:var(--stone);color:var(--ink)}
+.btn--line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn--ghost-light{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}.btn--ghost-light:hover{color:#fff;background:rgba(255,255,255,.08)}
+.icon-btn{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;color:var(--ink);background:transparent;border:0;cursor:pointer;text-decoration:none}
+.icon-btn svg{width:20px;height:20px}
+
+/* Image placeholders — replace each .media with an <img> */
+.media{position:relative;overflow:hidden;background:var(--ph-2)}
+.media img{width:100%;height:100%;object-fit:cover}
+.media__note{position:absolute;left:14px;bottom:12px;font-size:12px;color:var(--body)}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:#fff;color:var(--ink);padding:6px 9px;line-height:1}
+.tags{position:absolute;top:12px;left:12px;display:flex;gap:6px;flex-wrap:wrap}
+
+/* ===== Announcement ===== */
+.announce{background:var(--ink);color:#fff}
+.announce .wrap{min-height:40px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.announce .label{font-size:11px}
+.announce__right{color:var(--soft)}
+.countdown{font-variant-numeric:tabular-nums}
+
+/* ===== Header ===== */
+.header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.header__inner{min-height:84px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+.nav{display:flex;gap:28px;flex-wrap:wrap}
+.nav a{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;min-height:44px;display:flex;align-items:center;white-space:nowrap}
+.logo{font-family:var(--serif);font-size:34px;text-decoration:none;letter-spacing:.02em;text-align:center;line-height:1}
+.header__right{display:flex;justify-content:flex-end;align-items:center;gap:2px}
+.header__right .nav{margin-right:14px;gap:22px}
+.lang{display:flex;align-items:center;font-size:13px;font-weight:700;letter-spacing:.1em}
+.lang a{min-width:34px;min-height:44px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--muted)}
+.lang a[aria-current="true"]{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
+.lang span{color:var(--faint)}
+.menu-btn{display:none}
+.mobile-menu{display:none;border-top:1px solid var(--line);padding:8px var(--gutter) 20px;background:#fff}
+.mobile-menu a{display:flex;align-items:center;min-height:52px;border-bottom:1px solid var(--line);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.header.is-open .mobile-menu{display:block}
+
+/* ===== Hero ===== */
+.hero__media{min-height:760px;background:var(--ph-1);display:flex;align-items:flex-end;color:#fff}
+.hero__media .media__note{left:auto;right:24px;top:20px;bottom:auto;color:var(--soft)}
+.hero__content{width:100%;padding-bottom:150px;display:flex;flex-direction:column;gap:26px;position:relative}
+.hero__eyebrow{color:#E9E3DA}
+.hero h1{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(52px,7.4vw,112px);line-height:.94;max-width:980px;text-wrap:balance;letter-spacing:-.01em}
+.hero p{margin:0;font-size:19px;max-width:540px;color:#EDE8E1}
+.hero__ctas{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Where & when */
+.finder-wrap{position:relative;margin-top:-76px}
+.finder{background:#fff;box-shadow:0 24px 60px rgba(15,15,15,.16);display:flex;flex-wrap:wrap;align-items:stretch}
+.field{display:flex;flex-direction:column;gap:2px;padding:14px 20px;flex:1 1 200px;border-right:1px solid var(--line)}
+.field--wide{flex:2 1 280px}
+.field label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select{border:0;padding:0;font:500 17px var(--sans);color:var(--ink);background:transparent;min-height:28px;width:100%;appearance:none}
+.finder .btn{min-height:84px;flex:0 0 auto;padding:0 40px}
+.finder-note{margin:12px 0 0;font-size:14px;color:var(--muted)}
+
+/* ===== Promises ===== */
+.promises{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:88px}
+.promise{padding:28px 24px;display:flex;flex-direction:column;gap:8px;border-right:1px solid var(--line)}
+.promise:first-child{padding-left:0}
+.promise:last-child{border-right:0;padding-right:0}
+.promise strong{font-size:17px}
+.promise span:last-child{font-size:15px;color:var(--muted)}
+
+/* ===== Occasions ===== */
+.occasions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.occ{text-decoration:none;display:flex;flex-direction:column;gap:14px}
+.occ .media{aspect-ratio:4/5}
+.occ__title{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.occ__title .serif{font-size:34px;line-height:1.1}
+.occ-mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.occ-mini a{text-decoration:none;display:flex;flex-direction:column;gap:10px}
+.occ-mini .media{aspect-ratio:1}
+
+/* ===== Products ===== */
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 16px}
+.product{text-decoration:none;display:flex;flex-direction:column;gap:12px}
+.product .media{aspect-ratio:4/5}
+.product__meta{display:flex;justify-content:space-between;gap:12px}
+.product__name{font-family:var(--serif);font-size:28px;line-height:1.1}
+.product__sub{font-size:14px;color:var(--muted)}
+.product__price{font-size:17px;font-weight:700;white-space:nowrap}
+.products-more{display:none}
+
+/* ===== Photo promise ===== */
+.promise-split{background:var(--stone);display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.promise-split .media{min-height:720px;background:#D6CBC0}
+.promise-split__text{padding:clamp(32px,6vw,96px);display:flex;flex-direction:column;gap:28px;justify-content:center}
+.promise-split h2{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(46px,5vw,80px);line-height:.98}
+.promise-split p{margin:0;font-size:18px;color:var(--body);max-width:500px}
+.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--stone-line)}
+.steps li{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:18px 0;border-bottom:1px solid var(--stone-line)}
+.steps .serif{font-size:28px;line-height:1}
+
+/* ===== Exact time ===== */
+.exact{background:var(--ink);color:#fff;padding:clamp(64px,9vw,120px) 0}
+.exact .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:center}
+.exact__text{display:flex;flex-direction:column;gap:24px}
+.exact h2{margin:0;font-family:var(--serif);font-weight:400;font-size:clamp(46px,5vw,80px);line-height:.98}
+.exact p{margin:0;font-size:18px;color:var(--soft);max-width:480px}
+.exact__clock{display:flex;flex-direction:column;gap:22px}
+.big-time{font-family:var(--serif);font-size:clamp(112px,14vw,200px);line-height:.85;font-variant-numeric:tabular-nums}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:56px;min-width:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #4A4642;background:transparent;color:#fff;font:600 18px/1.1 var(--sans);font-variant-numeric:tabular-nums;cursor:pointer}
+.chip[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
+.chip:disabled{color:#8F8A84;border-style:dashed;cursor:not-allowed;font-size:13px}
+.chip:disabled s{font-size:18px}
+.exact__zones{font-size:15px;color:var(--soft)}
+
+/* ===== Reviews ===== */
+.reviews{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
+.ratings{display:flex;gap:40px;flex-wrap:wrap;margin-top:18px}
+.rating{display:flex;flex-direction:column}
+.rating .serif{font-size:96px;line-height:1}
+.quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--ink)}
+.quote{margin:0;padding:28px 28px 28px 0;display:flex;flex-direction:column;gap:16px;border-bottom:1px solid var(--line)}
+.quote + .quote{padding:28px 0 28px 28px;border-left:1px solid var(--line)}
+.quote blockquote{margin:0;font-family:var(--serif);font-size:28px;line-height:1.2}
+
+/* ===== Cities ===== */
+.cities{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0}
+.cities nav{display:flex;flex-wrap:wrap;gap:4px 28px;font-family:var(--serif);font-size:clamp(36px,4.4vw,64px);line-height:1.15;margin-top:20px}
+.cities a{text-decoration:none}
+.cities .sep{color:var(--faint)}
+
+/* ===== Concierge + FAQ ===== */
+.concierge{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px}
+.concierge__text{display:flex;flex-direction:column;gap:20px}
+.concierge p{margin:0;font-size:17px;color:var(--body);max-width:460px}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap}
+.faq details{border-top:1px solid var(--line)}
+.faq details:first-of-type{border-top-color:var(--ink)}
+.faq details:last-of-type{border-bottom:1px solid var(--line)}
+.faq summary{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:600;font-size:17px;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:400;font-size:22px}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0 0 20px;color:var(--body)}
+
+/* ===== Footer ===== */
+.footer{margin-top:clamp(72px,10vw,140px);background:var(--ink);color:var(--soft);padding:88px 0 40px}
+.footer .wrap{display:flex;flex-direction:column;gap:64px}
+.footer__top{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-end}
+.footer__headline{font-family:var(--serif);font-size:clamp(44px,6vw,88px);line-height:.95;color:#fff;max-width:720px}
+.reminder{display:flex;flex:1 1 380px;max-width:520px;border-bottom:1px solid #fff}
+.reminder input{flex:1;min-width:0;min-height:56px;background:transparent;border:0;color:#fff;font:16px var(--sans)}
+.reminder input::placeholder{color:#A39E97}
+.reminder button{background:transparent;border:0;color:#fff;cursor:pointer;min-height:56px;padding-left:16px}
+.footer__cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;font-size:15px}
+.footer__cols nav{display:flex;flex-direction:column;gap:10px}
+.footer__cols a{color:var(--soft);text-decoration:none}
+.footer__cols a:hover{color:#fff}
+.footer__cols .label{color:#fff}
+.footer address{font-style:normal;font-size:14px;line-height:1.8}
+.footer__bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;padding-top:24px;border-top:1px solid #2E2C2A}
+.footer__bottom .label{font-size:11px}
+.footer__bottom nav{display:flex;gap:18px}
+.footer__bottom nav a{color:var(--soft)}
+.footer__bottom nav a[aria-current="true"]{color:#fff}
+
+/* Floating WhatsApp (mobile) */
+.fab{display:none;position:fixed;right:16px;bottom:20px;z-index:30;height:56px;padding:0 20px;background:#fff;color:var(--ink);align-items:center;gap:8px;text-decoration:none;box-shadow:0 10px 30px rgba(15,15,15,.3)}
+
+/* ===== Responsive ===== */
+@media (max-width:1100px){
+  .header__right .nav{display:none}
+  .products{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .promises{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .promise:nth-child(2){border-right:0;padding-right:0}
+  .promise:nth-child(3){padding-left:0;border-top:1px solid var(--line)}
+  .promise:nth-child(4){border-top:1px solid var(--line)}
+  .occasions{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .occasions > :last-child{display:none}
+}
+@media (max-width:860px){
+  .header__inner{min-height:60px;grid-template-columns:auto 1fr auto;gap:8px}
+  .header__inner > .nav{display:none}
+  .menu-btn{display:inline-flex}
+  .logo{font-size:26px}
+  .header .lang a:not([aria-current="true"]){color:var(--ink)}
+  .header .lang a[aria-current="true"],.header .lang span{display:none}
+  .header__right .icon-btn[data-hide-sm]{display:none}
+
+  .hero__media{min-height:620px}
+  .hero__media .media__note{left:16px;right:auto;top:14px}
+  .hero__content{padding-bottom:64px;gap:18px}
+  .hero p{font-size:16px}
+  .hero__ctas{display:none}
+  .finder-wrap{margin-top:-24px}
+  .finder{flex-direction:column}
+  .field{border-right:0;border-bottom:1px solid var(--line);padding:12px 16px;flex:none}
+  .finder .btn{min-height:54px;width:100%}
+  .finder-note{font-size:13px}
+
+  .promises{grid-template-columns:1fr;margin-top:48px;border-top-color:var(--ink)}
+  .promise,.promise:first-child,.promise:last-child,.promise:nth-child(n){padding:18px 0;border-right:0;border-top:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:40px 1fr;gap:4px 8px}
+  .promise .label{grid-row:span 2}
+  .promise:last-child{display:none}
+
+  .section-head{margin-bottom:18px}
+  .occasions{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter)}
+  .occasions > *{flex:0 0 260px;scroll-snap-align:start}
+  .occasions > .occ-mini{display:none}
+  .occasions > :last-child{display:flex}
+  .occ__title .serif{font-size:26px}
+
+  .products{gap:24px 10px}
+  .product__meta{flex-direction:column;gap:2px}
+  .product__name{font-size:22px}
+  .products-more{display:flex;margin-top:24px;width:100%}
+
+  .promise-split{grid-template-columns:1fr}
+  .promise-split .media{min-height:380px}
+  .promise-split__text{padding:36px 20px 44px;gap:18px}
+  .steps li{grid-template-columns:44px 1fr;padding:14px 0}
+
+  .exact .wrap{grid-template-columns:1fr;gap:28px}
+  .chip{min-width:0;flex:1}
+
+  .reviews,.concierge{grid-template-columns:1fr;gap:32px}
+  .rating .serif{font-size:64px}
+  .quotes{grid-template-columns:1fr}
+  .quote,.quote + .quote{padding:22px 0;border-left:0}
+  .quote blockquote{font-size:26px}
+
+  .footer{padding:48px 0 110px}
+  .footer .wrap{gap:36px}
+  .footer__cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+  .footer address{grid-column:1 / -1}
+  .fab{display:flex}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<a class="sr-only" href="#main">Skip to content</a>
+
+<div class="announce">
+  <div class="wrap">
+    <span class="label">Same-day in [City] · order within <span class="countdown" data-cutoff="16:00">02:14:36</span></span>
+    <span class="label announce__right">Next-day across Italy · photo of every bouquet before delivery</span>
+  </div>
+</div>
+
+<header class="header" id="header">
+  <div class="wrap header__inner">
+    <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+    <nav class="nav" aria-label="Main">
+      <a href="/en/occasions">Occasions</a>
+      <a href="/en/flowers">Flowers</a>
+      <a href="/en/gifts">Gifts</a>
+      <a href="/en/same-day" class="accent">Same-day</a>
+    </nav>
+    <a href="/en/" class="logo">[Brand Name]</a>
+    <div class="header__right">
+      <nav class="nav" aria-label="Secondary"><a href="/en/delivery">Delivery</a><a href="/en/contact">Contact</a></nav>
+      <nav class="lang" aria-label="Language">
+        <a href="/en/" aria-current="true">EN</a><span aria-hidden="true">/</span><a href="/it/" lang="it" hreflang="it">IT</a>
+      </nav>
+      <button class="icon-btn" type="button" aria-label="Search" data-hide-sm><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="icon-btn" href="/en/account" aria-label="Account" data-hide-sm><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></a>
+      <a class="icon-btn" href="/en/cart" aria-label="Cart, 0 items"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+    <a href="/en/occasions">Occasions</a><a href="/en/flowers">Flowers</a><a href="/en/gifts">Gifts</a><a href="/en/same-day">Same-day</a><a href="/en/delivery">Delivery info</a><a href="/en/contact">Contact</a><a href="/en/account">Account</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-label="Introduction">
+  <div class="media hero__media">
+    <!-- Replace with: <img src="hero.jpg" alt="…" style="position:absolute;inset:0"> -->
+    <span class="media__note">[Full-bleed photo — hands passing a bouquet at a [City] door, evening light]</span>
+    <div class="wrap hero__content">
+      <span class="label hero__eyebrow">Hand-made in [City] · delivered all over Italy</span>
+      <h1>Send love to Italy, <em>from anywhere</em> in the world.</h1>
+      <p>Same-day at the exact minute you choose — and a photo of the real bouquet before it leaves our workshop.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--paper" href="/en/flowers">Send flowers</a>
+        <a class="btn btn--ghost-light" href="#how">How it works</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap finder-wrap">
+    <form class="finder" action="/en/flowers" method="get" aria-label="Where and when">
+      <div class="field field--wide"><label for="f-where">Deliver to</label><input id="f-where" name="postcode" value="50123 · [City]" autocomplete="postal-code"></div>
+      <div class="field"><label for="f-date">Date</label><input id="f-date" name="date" value="Today, Sat 24 Oct"></div>
+      <div class="field"><label for="f-time">Time in Italy</label><input id="f-time" name="time" value="19:30 · exact"></div>
+      <button class="btn btn--ink" type="submit">Show bouquets</button>
+    </form>
+    <p class="finder-note" id="tz-note">19:30 in Italy is 18:30 in London — your time. We only show what we can really deliver then.</p>
+  </div>
+</section>
+
+<section class="wrap" aria-label="Our promises">
+  <div class="promises">
+    <div class="promise"><span class="label accent">01</span><strong>Photo before delivery</strong><span>See the real bouquet on WhatsApp and email.</span></div>
+    <div class="promise"><span class="label accent">02</span><strong>The exact minute</strong><span>±15 min in [City], or the time fee back.</span></div>
+    <div class="promise"><span class="label accent">03</span><strong>All-in prices</strong><span>Delivery included. Nothing added at checkout.</span></div>
+    <div class="promise"><span class="label accent">04</span><strong>A florist on WhatsApp</strong><span>Real people, in English and Italian.</span></div>
+  </div>
+</section>
+
+<section class="wrap section" aria-labelledby="occ-h">
+  <div class="section-head"><h2 class="h2" id="occ-h">Shop by <em>occasion</em></h2><a class="label link-line" href="/en/occasions">All occasions</a></div>
+  <div class="occasions">
+    <a class="occ" href="/en/love-anniversary-flowers"><div class="media" style="background:var(--ph-2)"></div><span class="occ__title"><span class="serif">Love &amp; anniversary</span><span class="label muted">Shop</span></span></a>
+    <div class="occ-mini">
+      <a href="/en/birthday-flowers"><div class="media" style="background:var(--ph-3)"></div><span class="label">Birthday</span></a>
+      <a href="/en/thank-you-flowers"><div class="media" style="background:var(--ph-4)"></div><span class="label">Thank you</span></a>
+      <a href="/en/sympathy-flowers"><div class="media" style="background:var(--ph-5)"></div><span class="label">Sympathy</span></a>
+      <a href="/en/get-well-flowers"><div class="media" style="background:var(--ph-6)"></div><span class="label">Get well</span></a>
+    </div>
+    <a class="occ" href="/en/festa-della-donna"><div class="media" style="background:var(--ph-7)"><span class="tags"><span class="tag">8 March</span></span></div><span class="occ__title"><span class="serif">Mimosa season</span><span class="label muted">Pre-order</span></span></a>
+  </div>
+</section>
+
+<section class="wrap section" aria-labelledby="best-h">
+  <div class="section-head"><h2 class="h2" id="best-h">The most sent</h2><a class="label link-line" href="/en/flowers">All bouquets</a></div>
+  <div class="products">
+    <a class="product" href="/en/rosa-classica"><div class="media" style="background:#D9C3C3"><span class="tags"><span class="tag">Same-day</span><span class="tag">Exact time</span></span></div><span class="product__meta"><span><span class="product__name">Rosa Classica</span><br><span class="product__sub">12 red roses · ★ [4.9]</span></span><span class="product__price">€49</span></span></a>
+    <a class="product" href="/en/giardino"><div class="media" style="background:#E6DCCB"><span class="tags"><span class="tag">Same-day</span></span></div><span class="product__meta"><span><span class="product__name">Giardino</span><br><span class="product__sub">Seasonal pastels · ★ [4.8]</span></span><span class="product__price">€55</span></span></a>
+    <a class="product" href="/en/orchidea-bianca"><div class="media" style="background:#E4E4DE"><span class="tags"><span class="tag">Courier</span></span></div><span class="product__meta"><span><span class="product__name">Orchidea bianca</span><br><span class="product__sub">Potted orchid · ★ [4.9]</span></span><span class="product__price">€62</span></span></a>
+    <a class="product" href="/en/peonia-rosa"><div class="media" style="background:#E2CDCF"><span class="tags"><span class="tag">Same-day</span><span class="tag">Exact time</span></span></div><span class="product__meta"><span><span class="product__name">Peonia rosa</span><br><span class="product__sub">Seasonal peonies · ★ [4.9]</span></span><span class="product__price">€65</span></span></a>
+  </div>
+  <a class="btn btn--line products-more" href="/en/flowers">All bouquets</a>
+</section>
+
+<section id="how" class="section promise-split" aria-labelledby="how-h">
+  <div class="media"><span class="media__note">[Florist photographing a finished bouquet on the workshop bench]</span></div>
+  <div class="promise-split__text">
+    <span class="label accent">Our first promise</span>
+    <h2 id="how-h">See it <em>before</em> she does.</h2>
+    <p>When you can't be there, trust matters most. Our florist photographs your actual bouquet and sends it to you — never a stock image. Reply if anything isn't right and we'll fix it before it leaves.</p>
+    <ol class="steps">
+      <li><span class="serif">i.</span><span><strong>Choose</strong> — a bouquet, then a card, teddy, balloon or vase.</span></li>
+      <li><span class="serif">ii.</span><span><strong>Pay in euro</strong> — from any country, the total you see.</span></li>
+      <li><span class="serif">iii.</span><span><strong>Receive the photo</strong> — of the bouquet she'll hold.</span></li>
+      <li><span class="serif">iv.</span><span><strong>Delivered at your minute</strong> — and we tell you when.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="exact" aria-labelledby="exact-h">
+  <div class="wrap">
+    <div class="exact__text">
+      <span class="label" style="color:var(--soft)">Exact-time surprise · [City]</span>
+      <h2 id="exact-h">Midnight birthday? <em>Choose the minute.</em></h2>
+      <p>Any 15-minute slot from 7:00 to 22:00, a 2-hour window, or a special moment. Our own riders, ±15 minutes — or the time fee comes back.</p>
+      <a class="btn btn--paper" href="/en/same-day" style="align-self:flex-start">Book a time</a>
+    </div>
+    <div class="exact__clock">
+      <span class="big-time" id="big-time" aria-live="polite">19:30</span>
+      <div class="chips" role="group" aria-label="Example times">
+        <button class="chip" type="button" data-time="19:00" aria-pressed="false">19:00</button>
+        <button class="chip" type="button" data-time="19:15" aria-pressed="false">19:15</button>
+        <button class="chip" type="button" data-time="19:30" aria-pressed="true">19:30</button>
+        <button class="chip" type="button" disabled aria-label="19:45, fully booked"><s>19:45</s>Booked</button>
+      </div>
+      <span class="exact__zones" id="zones">Sun 14 Feb · 19:30 Italy = 00:30 Mon Dhaka · 18:30 London · 13:30 New York</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section reviews" aria-labelledby="rev-h">
+  <div>
+    <span class="label muted" id="rev-h">Reviewed by senders abroad</span>
+    <div class="ratings">
+      <span class="rating"><span class="serif">[4.9]</span><span class="label">Google · [N] reviews</span></span>
+      <span class="rating"><span class="serif">[4.8]</span><span class="label">Trustpilot · [N]</span></span>
+    </div>
+  </div>
+  <div class="quotes">
+    <figure class="quote"><blockquote>“[Real Google review about the photo before delivery]”</blockquote><figcaption class="label muted">[Name] · London → [City]</figcaption></figure>
+    <figure class="quote"><blockquote>“[Real Trustpilot review about the midnight delivery]”</blockquote><figcaption class="label muted">[Name] · Berlin → Milano</figcaption></figure>
+  </div>
+</section>
+
+<section class="section cities" aria-labelledby="cities-h">
+  <div class="wrap">
+    <span class="label muted" id="cities-h">We deliver to · same-day in [City], next-day everywhere else</span>
+    <nav aria-label="Cities">
+      <a href="/en/flower-delivery-city"><em>[City]</em></a><span class="sep" aria-hidden="true">/</span>
+      <a href="/en/flower-delivery-rome">Roma</a><span class="sep" aria-hidden="true">/</span>
+      <a href="/en/flower-delivery-milan">Milano</a><span class="sep" aria-hidden="true">/</span>
+      <a href="/en/flower-delivery-florence">Firenze</a><span class="sep" aria-hidden="true">/</span>
+      <a href="/en/flower-delivery-naples">Napoli</a><span class="sep" aria-hidden="true">/</span>
+      <a href="/en/flower-delivery-bologna">Bologna</a><span class="sep" aria-hidden="true">/</span>
+      <a href="/en/flower-delivery-venice">Venezia</a><span class="sep" aria-hidden="true">/</span>
+      <a href="/en/delivery" class="accent">all of Italy</a>
+    </nav>
+  </div>
+</section>
+
+<section class="wrap section concierge" aria-labelledby="ask-h">
+  <div class="concierge__text">
+    <span class="label accent">Florist on call</span>
+    <h2 class="h2" id="ask-h">Not sure what to send? <em>Ask us.</em></h2>
+    <p>Tell us who it's for and what she loves. A florist in [City] replies in English or Italian, 8:00–21:00, and can build something just for her.</p>
+    <div class="btn-row">
+      <a class="btn btn--ink" href="https://wa.me/390000000000">WhatsApp a florist</a>
+      <a class="btn btn--line" href="tel:+390000000000">Call [+39 000 000 0000]</a>
+    </div>
+  </div>
+  <div class="faq">
+    <span class="label muted" style="display:block;padding-bottom:8px">Questions</span>
+    <details open><summary>Can I pay from outside Italy?</summary><p>Yes — prices are in euro and your bank converts. Cards, Apple Pay, Google Pay and PayPal work from any country.</p></details>
+    <details><summary>How exact is “exact time”?</summary><p>In [City] our own riders arrive within 15 minutes either side of the time you book. If we're late, the time fee is refunded automatically.</p></details>
+    <details><summary>What if she's not home?</summary><p>You choose at checkout: leave it with a neighbour or reception, call her, or bring it back. We always message you with what happened.</p></details>
+    <details><summary>Will it look like the photo?</summary><p>Flowers vary slightly by season; we always match style, colours and value — and you see the real bouquet in your photo before delivery.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <span class="footer__headline">Never forget <em>a birthday.</em></span>
+      <form class="reminder" action="/en/reminders" method="post" aria-label="Reminder signup">
+        <label for="rem-email" class="sr-only">Email</label>
+        <input id="rem-email" name="email" type="email" placeholder="Your email — we'll remind you 7 and 2 days before" autocomplete="email" required>
+        <button type="submit" class="label">Remind me</button>
+      </form>
+    </div>
+    <div class="footer__cols">
+      <nav aria-label="Shop"><span class="label">Shop</span><a href="/en/occasions">Occasions</a><a href="/en/flowers">Flowers</a><a href="/en/plants">Plants</a><a href="/en/gifts">Gifts</a><a href="/en/corporate">Corporate</a></nav>
+      <nav aria-label="Help"><span class="label">Help</span><a href="/en/delivery">Delivery info</a><a href="/en/track">Track an order</a><a href="/en/faq">FAQ</a><a href="/en/contact">Contact</a></nav>
+      <nav aria-label="Company"><span class="label">Company</span><a href="/en/about">About us</a><a href="/en/journal">Journal</a><a href="/en/terms">Terms of sale</a><a href="/en/privacy">Privacy &amp; cookies</a><a href="/en/refunds">Refunds &amp; substitution</a></nav>
+      <address><span class="label" style="color:#fff;display:block;margin-bottom:6px">[Company name S.r.l.]</span>[Via …, 00 — 00000 City (XX)], Italia<br>P.IVA [00000000000]<br>PEC [name@pec.it] · [hello@brand.it]</address>
+    </div>
+    <div class="footer__bottom">
+      <span class="label">Visa · Mastercard · Amex · Apple Pay · Google Pay · PayPal · 100% secure</span>
+      <nav class="label" aria-label="Language"><a href="/en/" aria-current="true">English</a><a href="/it/" lang="it" hreflang="it">Italiano</a></nav>
+    </div>
+  </div>
+</footer>
+
+<a class="fab label" href="https://wa.me/390000000000" aria-label="WhatsApp a florist, English or Italian">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20l1.5-4A8 8 0 1 1 9 19.5L4 20z"/></svg>Florist
+</a>
+
+<script>
+(function () {
+  var ROME = 'Europe/Rome';
+
+  // Mobile menu
+  var header = document.getElementById('header');
+  var menuBtn = header.querySelector('.menu-btn');
+  menuBtn.addEventListener('click', function () {
+    var open = header.classList.toggle('is-open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+
+  // Current wall-clock parts in a given time zone
+  function partsIn(tz, date) {
+    var f = new Intl.DateTimeFormat('en-GB', { timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+    var p = {}; f.formatToParts(date || new Date()).forEach(function (x) { p[x.type] = x.value; });
+    return { h: +p.hour % 24, m: +p.minute, s: +p.second };
+  }
+
+  // Same-day countdown to the cut-off (Italian time)
+  var cd = document.querySelector('.countdown');
+  if (cd) {
+    var cut = cd.getAttribute('data-cutoff').split(':');
+    var cutSec = (+cut[0]) * 3600 + (+cut[1]) * 60;
+    var tick = function () {
+      var t = partsIn(ROME);
+      var left = cutSec - (t.h * 3600 + t.m * 60 + t.s);
+      if (left <= 0) { cd.textContent = 'tomorrow'; return; }
+      var h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), s = left % 60;
+      cd.textContent = [h, m, s].map(function (n) { return String(n).padStart(2, '0'); }).join(':');
+    };
+    tick(); setInterval(tick, 1000);
+  }
+
+  // Convert an Italian HH:MM to the visitor's local time
+  var localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  var cityName = localTz.split('/').pop().replace(/_/g, ' ');
+  function italyToLocal(hhmm) {
+    var now = new Date();
+    var r = partsIn(ROME, now), l = partsIn(localTz, now);
+    var diff = ((l.h * 60 + l.m) - (r.h * 60 + r.m) + 1440 * 2) % 1440;
+    if (diff > 720) diff -= 1440;
+    var p = hhmm.split(':'), mins = (+p[0]) * 60 + (+p[1]) + diff;
+    var dayShift = mins >= 1440 ? ' (next day)' : mins < 0 ? ' (day before)' : '';
+    mins = (mins + 1440) % 1440;
+    return String(Math.floor(mins / 60)).padStart(2, '0') + ':' + String(mins % 60).padStart(2, '0') + dayShift;
+  }
+  var note = document.getElementById('tz-note');
+  if (note && localTz !== ROME) {
+    note.textContent = '19:30 in Italy is ' + italyToLocal('19:30') + ' in ' + cityName + ' — your time. We only show what we can really deliver then.';
+  }
+
+  // Exact-time chips demo
+  var big = document.getElementById('big-time');
+  var zones = document.getElementById('zones');
+  document.querySelectorAll('.chip[data-time]').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      document.querySelectorAll('.chip[data-time]').forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+      chip.setAttribute('aria-pressed', 'true');
+      var t = chip.getAttribute('data-time');
+      big.textContent = t;
+      if (localTz !== ROME) zones.textContent = t + ' in Italy = ' + italyToLocal(t) + ' in ' + cityName + ' (your time) · delivered within ±15 min';
+    });
+  });
+})();
+</script>
+</body>
+</html>

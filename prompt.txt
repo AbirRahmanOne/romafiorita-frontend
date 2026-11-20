@@ -1,0 +1,393 @@
+You are a senior frontend engineer and UI developer. Build the FRONTEND for "Roma Fiorita" as a standalone repository, completely separate from the backend. The backend (FastAPI + PostgreSQL) lives in its own repo and is consumed only over HTTP. Work professionally, in phases, and STOP for my review at the end of each phase.
+
+══════════════════════════════════════
+1. PROJECT CONTEXT
+══════════════════════════════════════
+Brand: Roma Fiorita · https://romafiorita.com
+Business: online flower and gift shop in Rome, Italy.
+- Customers anywhere in the world order and pay online; delivery happens only inside Italy.
+- Rome (own riders): same-day delivery. Customers can choose Standard (any time that day), a 2-hour window (+fee), or an exact time (±15 min, +fee), in 15-minute slots from 07:00 to 23:45.
+- Rest of Italy: next-day boxed bouquet delivery by courier, date only.
+
+Main buyer: lives abroad and sends flowers to a loved one in Italy. Trust is everything:
+- a photo of the real bouquet is sent to the buyer (WhatsApp + email) before delivery
+- all-in prices, with delivery included
+- on-time delivery
+
+Languages: Italian (it) and English (en). Prices are in EUR only.
+
+Domains:
+- romafiorita.com (storefront)
+- admin.romafiorita.com (admin dashboard)
+- api.romafiorita.com (backend, NOT in this repo)
+
+══════════════════════════════════════
+2. DESIGN SOURCE OF TRUTH
+══════════════════════════════════════
+The /design folder contains two HTML design prototypes:
+- design/Roma_Fiorita_Storefront.dc.html — the customer storefront
+- design/Roma_Fiorita_Admin.dc.html — the admin dashboard
+
+They are written in a prototype format (<x-dc>, <sc-for>, <sc-if>, {{ bindings }}, a DCLogic class). Do NOT copy that format. Read them to extract:
+- layout and section order
+- spacing, typography scale, component shapes and interactions
+- copy tone
+- sample data shapes
+
+Then rebuild them as clean, production React components. The design-system stylesheet the storefront references (_ds/...) is NOT included, so derive the tokens below and match the look by eye.
+
+STOREFRONT look (from the design)
+- Elegant editorial florist style:
+  - a large serif display heading with italic accent words (e.g. "Send love to Italy, *from anywhere* in the world.")
+  - generous whitespace
+  - thin divider lines
+  - 4:5 product photos
+  - a dark announcement bar and a dark footer (#1d1b1a)
+  - a dark "exact-time" section showing a huge time display and time chips
+- Colour theme: PINK accent on warm light backgrounds.
+  - accent #C2185B, accent-700 #A3134C, accent-300 #F48FB1, accent-soft #FCE4EC
+  - background #FFF7FA, surface #FFFFFF
+  - text #3A1F2B, muted #6B4E5A, divider #F3D1DE
+  - dark sections #1d1b1a with light text and pink-300 accents
+  - success #2E7D5B
+- Fonts: "Cormorant Garamond" for headings and the wordmark ("Roma *Fiorita*"); "DM Sans" for body and UI. Load them via next/font.
+
+ADMIN look (from the design, keep it exactly)
+- Font: Plus Jakarta Sans.
+- Colours:
+  - background #f5f7fb, cards #ffffff with border #e6e9f0 and radius 12px
+  - text #111827, muted #6b7280
+  - dark sidebar #111827 with an "RF" blue logo tile
+  - primary blue #2563eb (hover #1d4fd0), blue-100 #eaf1fe
+- Status pills (always text plus colour):
+  - New/Awaiting: amber (#fff4e5 / #b45309)
+  - Photo sent: blue (#eaf1fe / #1d4ed8)
+  - Approved: violet (#ede9fe / #6d28d9)
+  - Out for delivery: sky (#e0f2fe / #0369a1)
+  - Delivered: green (#dcfce7 / #15803d)
+  - Declined/Refunded: red/slate
+- Sidebar: Dashboard, Orders, Catalogue, Insights, View storefront, plus the user block at the bottom.
+- Top bar: page title + subtitle, Rome date/clock, search, Export, and a "New phone order" primary button.
+
+Accessibility (both apps):
+- WCAG AA contrast
+- 44px minimum tap targets
+- visible focus states
+- never colour-only status
+- respect prefers-reduced-motion
+
+══════════════════════════════════════
+3. TECH STACK (frontend only)
+══════════════════════════════════════
+Monorepo: pnpm workspaces + Turborepo, TypeScript strict everywhere.
+
+/apps/storefront — Next.js (App Router, latest stable)
+- SSR/SSG for SEO and AI crawlers
+- next-intl with /it and /en routes (no auto-redirect by location)
+- Tailwind CSS + shadcn/ui (restyled to the pink tokens)
+- next/image
+
+/apps/admin — Vite + React SPA (no SSR needed; it's behind login)
+- React Router (or TanStack Router), TanStack Query, TanStack Table
+- Tailwind + shadcn/ui (blue/white tokens)
+- Recharts for charts
+- i18n for the admin UI: EN default, IT optional
+
+/packages/ui-tokens — both themes as Tailwind presets + CSS variables
+
+/packages/ui — shared primitives (Button, Input, Select, Dialog, Toast, Pill/Badge, Skeleton, EmptyState)
+
+/packages/api-client — typed client GENERATED from the backend's OpenAPI schema
+- source: `OPENAPI_URL`, e.g. http://localhost:8000/openapi.json, or a committed openapi.json
+- tool: openapi-typescript + openapi-fetch
+- never hand-write API types
+
+/packages/mocks — MSW (Mock Service Worker) handlers + seed data based on the design's sample data
+- lets both apps run fully before the backend exists
+- switch with `NEXT_PUBLIC_USE_MOCKS` / `VITE_USE_MOCKS`
+
+/packages/config — shared ESLint, Prettier and tsconfig
+
+Payments (storefront):
+- Stripe.js + Payment Element: cards, Apple Pay, Google Pay, PayPal, Klarna
+- The frontend never computes the amount it charges. It asks the backend to create the PaymentIntent and only confirms it.
+- Payments are authorised (held) at checkout and captured by the backend when the shop accepts the order.
+
+Quality:
+- Vitest + Testing Library; Playwright E2E for both apps, running against mocks
+- ESLint, Prettier, typecheck in CI (GitHub Actions)
+- Lighthouse CI on the storefront
+
+Hosting:
+- storefront: Cloudflare Workers via the OpenNext Cloudflare adapter (wrangler config included)
+- admin: static build on Cloudflare (Pages/Workers static assets)
+- Provide .env.example files for both apps.
+
+══════════════════════════════════════
+4. API CONTRACT (expected from the backend)
+══════════════════════════════════════
+Build against these endpoints (mock them in MSW). Use the generated client once the backend's OpenAPI is available. If something is missing from OpenAPI, list it in docs/api-gaps.md instead of inventing it.
+
+Public (storefront):
+- GET  /v1/catalog/products?occasion=&category=&locale=
+- GET  /v1/catalog/products/{slug}
+- GET  /v1/catalog/occasions
+- GET  /v1/delivery/check?postcode=&date= → zone (ROME | NATIONAL), available types, fees, cut-off
+- GET  /v1/delivery/slots?postcode=&date= → 15-min slots with available/booked
+- POST /v1/cart/quote → server-calculated totals (items, add-ons, time fee, delivery)
+- POST /v1/checkout → creates the order + Stripe PaymentIntent (manual capture); returns client_secret and order number (RF-YYYY-NNNNN)
+- GET  /v1/orders/track/{token} → status timeline, bouquet photo, delivery time
+- POST /v1/reminders → occasion reminder signup
+- GET  /v1/content/faqs, /v1/content/cities
+
+Admin (cookie auth, roles OWNER / MANAGER / FLORIST / RIDER):
+- POST /v1/admin/auth/login, POST /logout, GET /me
+- GET  /v1/admin/dashboard → KPIs, revenue series, today's slots, pending photos
+- GET  /v1/admin/orders?status=&q=&date= · GET /v1/admin/orders/{id}
+- POST /v1/admin/orders/{id}/accept · /decline (reason) · /photo (upload) · /send-photo · /approve · /dispatch (rider) · /deliver
+- GET  /v1/admin/orders/stream → Server-Sent Events for new orders
+- GET/POST/PATCH /v1/admin/products · POST /v1/admin/uploads/sign (R2 signed upload)
+- GET  /v1/admin/payments · /payouts · /disputes (Stripe data via the backend)
+- GET  /v1/admin/insights/seo?range= → Search Console: clicks, impressions, CTR, queries, landing pages, tracked keywords, site health
+- GET/PATCH /v1/admin/settings (zones, fees, slots, blocked dates, staff)
+
+══════════════════════════════════════
+5. STOREFRONT PAGES (/it and /en)
+══════════════════════════════════════
+Rebuild the home page exactly in the design's section order:
+1. Announcement bar (same-day countdown to the Rome cut-off; "a photo of every bouquet before it leaves").
+2. Sticky header: wordmark, nav (Occasions, Bouquets, Plants & gifts, Same-day, Delivery), EN/IT switcher, search, account, cart with count. NO "Admin" link on the public site.
+3. Hero: serif headline, subtext, CTAs ("Send flowers", "How it works"), trust line, hero photo with caption.
+4. "Where & when" bar: postcode/city, date, time in Italy, "Show bouquets". Below it: "19:30 in Italy is 00:30 in Dhaka — your time", using the visitor's timezone.
+5. Four promises: Photo before delivery · The exact minute · All-in prices · A florist on WhatsApp.
+6. Shop by occasion grid.
+7. "Most sent this week" product grid with filter chips (All / Roses / Seasonal / Dried), product cards (tags, rating, all-in price, add to basket + toast).
+8. "See it before she does" photo-promise section with 4 steps.
+9. Dark exact-time section: big selected time, time chips (selected / booked states), multi-timezone line, "Book a time".
+10. Reviews block. It must render ONLY real data from the API; when there is no data, hide it or show an empty state. Never hard-code ratings or review counts.
+11. "We deliver to" city list (Rome first) → city landing pages.
+12. FAQ accordion + "Florist on call" (WhatsApp / call CTAs).
+13. Dark footer: "Never forget a birthday" reminder signup, link columns, business identity block from config, payment-method row.
+
+Other pages:
+- /[locale]/occasions/[slug], /[locale]/bouquets (catalog with filters)
+- /[locale]/product/[slug]:
+  - gallery, sizes, delivery checker (postcode → date → time type → slot chips)
+  - add-ons, card message with live preview
+  - trust strip, details, substitution note, related products
+- /[locale]/cart → /[locale]/checkout, 4 steps:
+  1. Recipient in Italy: postcode validated via /delivery/check; address type home / office / hospital / funeral home / hotel
+  2. Delivery date + time type + slot; show the sender's local time too
+  3. Sender details
+  4. Stripe Payment Element; terms checkbox, including the perishable-goods withdrawal exclusion
+  Keep the order summary visible throughout (sticky on desktop, collapsible on mobile).
+- /[locale]/order/confirmation/[number]
+- /[locale]/track/[token] (no login)
+- /[locale]/flower-delivery-rome, plus Rome neighbourhood pages (Trastevere, Prati, Parioli, Monti, Testaccio, EUR, Centro Storico) and other city pages, all from API data
+- /[locale]/delivery, /faq, /about, /contact, /terms, /privacy, /cookies, /journal/[slug]
+- Cookie consent banner (GDPR): analytics only loads after consent. Plus 404 and error pages.
+
+SEO (storefront):
+- generateMetadata per page and locale; canonical on https://romafiorita.com
+- hreflang it/en + x-default; localised slugs (e.g. /en/flower-delivery-rome ↔ /it/consegna-fiori-roma)
+- sitemap.ts per locale; robots.ts that allows Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User, Claude-SearchBot, Claude-User, PerplexityBot
+- JSON-LD: Organization, Florist/LocalBusiness, Product + Offer + shippingDetails, BreadcrumbList
+- Product, occasion and city pages use SSG + revalidation; cart and checkout are dynamic
+- Targets: LCP < 2.5s, INP < 200ms, CLS < 0.1. Optimise images; no layout shift from fonts.
+- All user-facing text lives in messages/it.json and messages/en.json; nothing hard-coded. Italian text is ~25% longer, so layouts must flex.
+
+══════════════════════════════════════
+6. ADMIN SCREENS
+══════════════════════════════════════
+Rebuild the design's admin, then add what it is missing:
+
+1. Login page (blue/white).
+
+2. Dashboard (design "Overview"):
+   - KPI cards
+   - revenue bar chart, last 14 days, with tooltips
+   - Google this-week strip linking to Insights
+   - today's delivery slots list with status pills and an on-time %
+   - "Bouquet photos waiting to be sent" cards (Send photo / Open)
+
+3. Orders: status filter tabs with counts, search, table (Order, Sender + country, Recipient + area, Bouquet thumbnail, Slot + rider, Total, Status), click → order detail modal/drawer.
+
+4. ADD a real-time NEW ORDERS inbox:
+   - SSE + browser notification + sound
+   - each order card: Accept / Accept with change / Decline (reason → backend releases the Stripe hold)
+   - optional auto-accept indicator
+   - must work well on a phone
+
+5. Order detail:
+   - sender, recipient + address, slot (exact ±15 min), rider, card message, total paid, payment status
+   - photo upload + "Send photo to sender"
+   - status timeline
+   - action buttons follow the order lifecycle:
+     New → Accepted → Awaiting photo → Photo sent → Approved → Out for delivery → Delivered (plus Declined / Refunded / Problem)
+   - refund, print card / delivery note
+
+6. Catalogue: product cards (price, sold this week, stock), active/paused toggle, plus a full create/edit form:
+   - IT/EN fields side by side
+   - sizes and prices, add-ons, occasion tags
+   - availability, "Same-day" / "Exact time" flags
+   - SEO title/description
+   - image upload to R2 via signed URL
+
+7. Insights (design SEO tab):
+   - KPIs; clicks/impressions line chart with hover tooltip
+   - site health (indexed pages, crawl errors, Core Web Vitals, sitemap)
+   - top queries, top landing pages, tracked keywords with sparklines and "+ Add keyword"
+   - range switcher
+   - Ads and Social tabs show a "not connected yet" state
+
+8. ADD Payments: Stripe payment history table (filters, CSV export), refunds, payouts + balance, disputes with deadline.
+
+9. ADD Settings:
+   - delivery zones, fees and time-slot pricing, cut-offs, blocked dates and daily capacity
+   - notification recipients
+   - staff and roles (Florist and Rider never see payment data)
+
+10. "New phone order" flow: the same steps as checkout, run by staff.
+
+Every screen needs loading skeletons, empty states, error states with retry, and optimistic UI where it is safe.
+
+══════════════════════════════════════
+7. CONTENT RULES (important)
+══════════════════════════════════════
+The design prototypes contain placeholder content that MUST NOT ship as real. Put all of it in config/CMS placeholders and flag it in docs/content-todo.md:
+- Ratings, review counts, "41,000+ bouquets", "96 countries", "since 1987", customer quotes and staff names/photos. Show these only when real data exists. Never present invented reviews as genuine.
+- Florence leftovers that must become Rome: "Via dei Serragli", postcode 50125 Oltrarno, phone prefix 055. Use Rome placeholders, e.g. postcode 001xx, +39 06 …
+- Business identity (company name, address, P.IVA, PEC, phone, WhatsApp): read it from config; leave fields empty until the client provides them, and hide the P.IVA line while it is empty.
+- No wine or alcohol at launch: remove "bottle of Chianti" and "Gifts & wine".
+- Same-day cut-off, time-window fee and exact-time fee come from the API/settings, not from hard-coded "16:00" or "€9".
+- Payment-method icons must match what is actually enabled in Stripe.
+
+══════════════════════════════════════
+8. PHASES
+══════════════════════════════════════
+PHASE 0 — Project guidance
+- Root CLAUDE.md: summary, repo map, commands, conventions, definition of done, "frontend only — the backend is a separate repo"
+- Skills in .claude/skills/<name>/SKILL.md, each with YAML frontmatter (name, description = when to use) and concrete rules and examples:
+  1. storefront-design-system
+  2. admin-design-system
+  3. i18n-seo
+  4. checkout-and-delivery-ui
+  5. stripe-frontend
+  6. api-client-and-mocks
+  7. admin-orders-realtime
+  8. content-rules (section 7)
+  9. testing-frontend
+  10. deploy-cloudflare
+- STOP and list them.
+
+PHASE 1 — Scaffold
+- Monorepo, both apps, tokens, shared UI, MSW mocks seeded from the design data
+- API client generation script, CI, .env.example, README
+- Storefront layout (header, footer, cookie banner) and admin shell (sidebar, top bar, login)
+- STOP with the file tree, commands, decisions and assumptions.
+
+PHASE 2 — Storefront home page pixel-faithful to the design, in IT and EN, on mocks. STOP.
+PHASE 3 — Catalog, product page, delivery checker, cart, checkout with Stripe (test mode), confirmation, tracking. STOP.
+PHASE 4 — Admin dashboard, orders, real-time inbox, order detail lifecycle, catalogue CRUD. STOP.
+PHASE 5 — Payments, Insights, Settings, phone order. STOP.
+PHASE 6 — SEO pages (cities, neighbourhoods, journal), sitemaps, JSON-LD, performance + accessibility pass, Playwright E2E, Cloudflare deploy configs. STOP.
+
+══════════════════════════════════════
+9. WORKING RULES
+══════════════════════════════════════
+- Read the relevant skill before working in its area, and keep skills updated.
+- No secrets in git; only publishable keys in the frontend (Stripe pk_, etc.).
+- Money comes from the API as integer cents; format with Intl.NumberFormat for each locale.
+- Times: Europe/Rome is the source of truth; also show the visitor's local time.
+- Small Conventional Commits; every feature ships with tests and passes lint and typecheck.
+- When the backend contract is unclear, ask or log it in docs/api-gaps.md. Do not guess silently.
+
+══════════════════════════════════════
+10. ADDENDUM — PRODUCT TIERS, PAYMENTS DASHBOARD, CUSTOM ORDER PAYMENT REQUESTS
+══════════════════════════════════════
+
+A) PRODUCT TIERS: Standard · Premium · Luxury
+Every product has exactly three tiers. Admins set them up; the storefront shows them from the backend. Tier names are fixed:
+- EN: Standard / Premium / Luxury
+- IT: Standard / Premium / Luxury (labels in i18n so they can change later)
+
+Each tier has:
+- price (integer cents, EUR, all-in incl. delivery as configured)
+- short description IT/EN (e.g. "12 roses" / "18 roses" / "24 roses + premium wrap")
+- its own photo(s), plus stem count/size notes
+- active toggle (an admin can switch off a tier, e.g. Luxury unavailable today)
+- optional stock/availability and "Same-day" / "Exact time" eligibility
+One tier is marked as the default (usually Premium, which is pre-selected on the product page).
+
+Admin — Catalogue:
+- Product create/edit form with a "Tiers" section: three fixed rows (Standard, Premium, Luxury), each with price, IT/EN description, image upload, active switch and a default radio.
+- Validation: at least one active tier; prices must ascend Standard < Premium < Luxury (warn, don't block).
+- Catalogue cards show the price range ("€49 – €89") and which tiers are active; quick toggle per tier.
+- Bulk price edit (e.g. +10% on all Luxury tiers before Valentine's) with a preview before saving.
+
+Storefront:
+- Product cards: "from €X" (lowest active tier) plus the tier count.
+- Product page: a tier selector shown as three visual cards (name, price, short description). Selecting a tier switches the gallery photo and updates the price and the "what's included" text. Inactive tiers appear disabled with an "Unavailable today" label.
+- Cart, checkout, confirmation, tracking, emails and the admin order detail all show product + tier (e.g. "Rosa Classica · Luxury").
+- The frontend sends variant_id only; the backend recalculates every price in /cart/quote and /checkout.
+- SEO: Product JSON-LD with an AggregateOffer (lowPrice/highPrice) or one Offer per tier.
+
+B) PAYMENTS DASHBOARD (Stripe data via the backend)
+Admin → Payments:
+- KPI cards: gross sales, Stripe fees, refunds, net, for the selected range.
+- Payments table: date, order number, source (Website / Phone order / Custom request), customer + country, method (card, Apple Pay, Google Pay, PayPal, Klarna), amount, fee, net, status (held / captured / failed / refunded / disputed).
+- Filters, search, CSV export; click a row → order detail; "Open in Stripe" link.
+- Held payments panel: authorised but not yet captured, with time left before the hold expires (cards ~7 days, PayPal 10–20 days, Klarna 28 days) and capture/cancel buttons for OWNER/MANAGER.
+- Refunds (full/partial with reason), payouts list + current and pending balance, disputes with deadline countdown.
+- Monthly report download (CSV/PDF) for the accountant.
+- Florist and Rider roles never see this section.
+
+C) CUSTOM ORDER → PAYMENT REQUEST (so customers trust it)
+Use case: the client discusses a custom bouquet with a customer on WhatsApp or email, then sends an official, branded payment link from Roma Fiorita instead of asking for a bank transfer or using a random link.
+
+Admin → Orders → "New custom order" (and from the "New phone order" button):
+1. Items: pick catalogue products + tier, AND/OR add free-text custom items (title IT/EN, description, reference photo upload, price).
+2. Recipient in Italy (postcode validated), delivery date, time type and slot, card message, hide-sender option.
+3. Customer (sender): name, email, WhatsApp number with country code, language (IT/EN).
+4. Pricing: items + delivery/time fee + optional discount; the server calculates the final total.
+5. Expiry: the link expires after N hours (default 48h); optional internal note.
+6. Create → backend creates order RF-YYYY-NNNNN with status PAYMENT_REQUESTED and a secure, unguessable token.
+
+Sharing options after creation:
+- "Send via WhatsApp": opens wa.me/<number> with a pre-filled, bilingual message, e.g. "Hi Sofia, here is your Roma Fiorita order RF-2026-00123 (€84). Pay securely here: https://romafiorita.com/en/pay/<token> — the link is valid for 48 hours."
+- "Send by email": branded email from ordini@romafiorita.com with the order summary and a "Pay securely" button.
+- Copy link, QR code.
+- Download a branded PDF "Order summary & payment request" (logo, order number, items with photos, delivery details, total, link + QR, expiry, business contact details).
+  Label it "Order summary / Payment request", NOT "Invoice" or "Fattura": the business has no VAT number yet, so no fiscal invoice can be issued. Make the document title configurable so it can say "Invoice" later.
+
+Customer pay page: /[locale]/pay/[token] on romafiorita.com, the OWN domain, never a third-party-looking URL.
+- Shows the Roma Fiorita header and footer, order number, items with photos, recipient, delivery date/time, card message, the total in EUR with the customer's local currency estimate, and the expiry countdown.
+- Payment via the Stripe Payment Element (cards, Apple Pay, Google Pay, PayPal, Klarna). The order is already agreed, so it is captured automatically once paid (configurable).
+- Trust elements: secure-padlock note, "Payments processed by Stripe", business contact + WhatsApp button, statement descriptor ("ROMAFIORITA will appear on your statement"), and a short "How to check this is genuine" note.
+- States: unpaid / paid (→ confirmation + tracking link) / expired (→ "Ask us for a new link" WhatsApp button) / cancelled.
+- No indexing: the page sets noindex and is excluded from the sitemap.
+
+"Verify an order" page: /[locale]/verify
+- The customer enters an order number + email and the site confirms whether the payment request is genuine, showing the amount and status.
+- Link to it from the pay page, emails and the PDF.
+
+Admin follow-up:
+- Payment requests list with status (sent / viewed / paid / expired / cancelled), last viewed time, resend, edit (only before payment, which regenerates the token), cancel, duplicate.
+- Real-time notification when a request is paid; the order then enters the normal lifecycle (Accepted → Awaiting photo → …).
+- Optional automatic reminder 24h before expiry (email; WhatsApp later).
+
+D) API ADDITIONS (mock in MSW; log gaps in docs/api-gaps.md)
+- Product schema: variants[] {id, tier: STANDARD|PREMIUM|LUXURY, price_cents, description_it, description_en, images[], active, is_default, same_day, exact_time}
+- PATCH /v1/admin/products/{id}/variants · POST /v1/admin/products/bulk-price (preview + apply)
+- POST /v1/admin/payment-requests (create) · GET /v1/admin/payment-requests?status= · PATCH /{id} · POST /{id}/cancel · POST /{id}/resend · GET /{id}/pdf
+- GET  /v1/pay/{token} (public summary) · POST /v1/pay/{token}/intent (server-created PaymentIntent) · POST /v1/verify (order number + email)
+- GET  /v1/admin/payments?source=&status=&from=&to= · /held · POST /{id}/capture · POST /{id}/cancel-hold · /refunds · /payouts · /balance · /disputes · /reports/monthly
+
+E) SKILLS TO UPDATE / ADD
+- Update storefront-design-system (tier selector component), checkout-and-delivery-ui (variant_id everywhere), stripe-frontend (manual vs automatic capture per order source), admin-orders-realtime (payment-request events).
+- Add a new skill payment-requests: the full custom-order flow, link security (random token, expiry, single use, no indexing), message templates IT/EN, PDF layout, verify page, and the anti-scam trust checklist.
+- Add the new pages and flows to the Playwright E2E tests:
+  - admin creates a custom request → customer pays on /pay → order appears as paid
+  - tier selection → checkout total matches the backend quote
+
+

@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg text-text font-body antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-heading font-normal;
+  }
+}
+
+@layer components {
+  /* Theme-local button classes consumed by the shared <Button> primitive. */
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-5 text-sm font-medium transition;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+    @apply disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-accent text-white hover:bg-accent-700;
+  }
+  .btn-secondary {
+    @apply border border-divider bg-surface text-text hover:border-accent;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-text hover:text-accent-700;
+  }
+  .btn-icon {
+    @apply min-w-11 bg-transparent px-0 text-text hover:text-accent-700;
+  }
+}

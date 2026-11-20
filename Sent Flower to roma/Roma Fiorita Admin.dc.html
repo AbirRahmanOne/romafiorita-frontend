@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Roma Fiorita — Admin</title>
+  <link rel="stylesheet" href="_ds/classical-7809a365-a639-4730-b74e-56bf06f03ca2/styles.css">
+  <script src="_ds/classical-7809a365-a639-4730-b74e-56bf06f03ca2/_ds_bundle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;--font-heading:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'Plus Jakarta Sans',system-ui,sans-serif;--color-bg:#f5f7fb;--color-surface:#ffffff;--color-text:#111827;--color-divider:#e6e9f0;
+      --color-accent:#2563eb;--color-accent-100:#eaf1fe;--color-accent-200:#d3e2fd;--color-accent-300:#a9c6fb;--color-accent-400:#6e9ef6;--color-accent-500:#2563eb;--color-accent-600:#1d4fd0;--color-accent-700:#1a43a8;--color-accent-800:#173782;--color-accent-900:#0f2558;
+      --color-accent-2:#2563eb;--color-accent-2-100:#eaf1fe;--color-accent-2-300:#a9c6fb;--color-accent-2-500:#2563eb;--color-accent-2-700:#1a43a8;
+      --color-neutral-100:#f5f6f8;--color-neutral-200:#eceef2;--color-neutral-300:#dde0e6;--color-neutral-400:#b8bdc7;--color-neutral-500:#8a909c;--color-neutral-600:#5f6673;--color-neutral-700:#6b7280;--color-neutral-800:#23262c;--color-neutral-900:#0a0a0a;background:#f5f7fb}
+    a{color:#2563eb}
+    a:hover{color:#1d4fd0}
+  </style>
+</helmet>
+
+<div style="font-family:var(--font-body);color:#111827;background:#f5f7fb;min-height:100vh;display:flex;flex-wrap:wrap;align-items:stretch">
+
+  <aside style="flex:0 1 250px;min-width:220px;max-width:100%;background:#111827;color:#fff;display:flex;flex-direction:column;position:sticky;top:0;height:100vh">
+    <div style="display:flex;align-items:center;gap:12px;padding:18px 16px;border-bottom:1px solid #1f2937">
+      <span style="width:38px;height:38px;flex:none;border-radius:9px;background:#2563eb;display:grid;place-items:center;font-weight:700;font-size:16px">RF</span>
+      <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:20px;font-weight:700;line-height:1">Roma Fiorita</span><span style="font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#9ca3af">Florist admin</span></div>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:4px;padding:20px 10px">
+      <button onClick="{{ navO.go }}" style="display:flex;align-items:center;gap:14px;padding:11px 14px;border:0;border-radius:8px;background:{{ navO.bg }};color:{{ navO.fg }};font:500 15px var(--font-body);text-align:left;cursor:pointer" style-hover="background:{{ navO.hover }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg><span style="flex:1">Dashboard</span><span style="font-size:12px;opacity:.75;font-variant-numeric:tabular-nums">{{ navO.count }}</span></button>
+      <button onClick="{{ navR.go }}" style="display:flex;align-items:center;gap:14px;padding:11px 14px;border:0;border-radius:8px;background:{{ navR.bg }};color:{{ navR.fg }};font:500 15px var(--font-body);text-align:left;cursor:pointer" style-hover="background:{{ navR.hover }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"></path><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><path d="M8 13h8"></path><path d="M8 17h5"></path></svg><span style="flex:1">Orders</span><span style="font-size:12px;opacity:.75;font-variant-numeric:tabular-nums">{{ navR.count }}</span></button>
+      <button onClick="{{ navC.go }}" style="display:flex;align-items:center;gap:14px;padding:11px 14px;border:0;border-radius:8px;background:{{ navC.bg }};color:{{ navC.fg }};font:500 15px var(--font-body);text-align:left;cursor:pointer" style-hover="background:{{ navC.hover }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m-4.5 3a4.5 4.5 0 1 0 4.5 4.5M7.5 12H9m7.5 0a4.5 4.5 0 1 1-4.5 4.5m4.5-4.5H15m-3 4.5V15"></path><circle cx="12" cy="12" r="3"></circle></svg><span style="flex:1">Catalogue</span><span style="font-size:12px;opacity:.75;font-variant-numeric:tabular-nums">{{ navC.count }}</span></button>
+      <button onClick="{{ navI.go }}" style="display:flex;align-items:center;gap:14px;padding:11px 14px;border:0;border-radius:8px;background:{{ navI.bg }};color:{{ navI.fg }};font:500 15px var(--font-body);text-align:left;cursor:pointer" style-hover="background:{{ navI.hover }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg><span style="flex:1">Insights</span><span style="font-size:12px;opacity:.75;font-variant-numeric:tabular-nums">{{ navI.count }}</span></button>
+      <a href="Roma Fiorita Storefront.dc.html" style="display:flex;align-items:center;gap:14px;padding:11px 14px;border-radius:8px;color:#d1d5db;font:500 15px var(--font-body);text-decoration:none" style-hover="background:#1f2937;color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.4-4.4A2 2 0 0 1 7.8 2h8.4a2 2 0 0 1 1.4.6L22 7"></path><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><path d="M2 7h20v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-4 0 2.7 2.7 0 0 1-4 0 2.7 2.7 0 0 1-4 0 2.7 2.7 0 0 1-2 1 2 2 0 0 1-2-2z"></path></svg><span>View storefront</span></a>
+    </nav>
+        <div style="margin-top:auto;display:flex;align-items:center;gap:10px;padding:16px;border-top:1px solid #1f2937">
+      <span style="width:38px;height:38px;flex:none;border-radius:50%;background:#2563eb;display:grid;place-items:center;font-size:14px;font-weight:600">CB</span>
+      <div style="flex:1;display:flex;flex-direction:column;line-height:1.3"><span style="font-size:14px;font-weight:600">Chiara Benedetti</span><span style="font-size:12px;color:#9ca3af">Owner · admin</span></div>
+      <span style="color:#9ca3af;display:flex"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path></svg></span>
+    </div>
+  </aside>
+
+  <main style="flex:999 1 640px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:16px clamp(20px,2.4vw,32px);background:#fff;border-bottom:1px solid #e6e9f0">
+      <div>
+        <h1 style="margin:0;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:-.01em">{{ title }}</h1>
+        <p style="margin:4px 0 0;font-size:13px;color:#6b7280">{{ subtitle }}</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <sc-if value="{{ notInsights }}" hint-placeholder-val="{{ true }}"><div style="flex:1 1 140px;text-align:right;font-size:12.5px;line-height:1.4;color:#6b7280">Saturday, 24 October 2026<br>{{ clock }} · Roma</div>
+        <label style="display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;border:1px solid #e3e7ee;border-radius:8px;background:#fff;color:#9ca3af"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg><input placeholder="Search orders, customers…" value="{{ query }}" onChange="{{ onQuery }}" style="border:0;outline:0;font:14px var(--font-body);color:#111827;width:180px;min-width:0;background:transparent"></label></sc-if>
+        <sc-if value="{{ isInsights }}" hint-placeholder-val="{{ false }}"><div style="display:flex;border:1px solid #e3e7ee;border-radius:8px;overflow:hidden;height:42px;background:#fff"><sc-for list="{{ ranges }}" as="r" hint-placeholder-count="3"><button onClick="{{ r.pick }}" style="padding:0 14px;border:0;border-right:1px solid #e3e7ee;background:{{ r.bg }};color:{{ r.fg }};font:500 13px var(--font-body);cursor:pointer;white-space:nowrap">{{ r.label }}</button></sc-for></div></sc-if>
+        <button style="display:inline-flex;align-items:center;gap:8px;height:42px;white-space:nowrap;flex:none;padding:0 16px;border:1px solid #e3e7ee;border-radius:8px;background:#fff;color:#1f2937;font:500 14px var(--font-body);cursor:pointer" style-hover="background:#f5f7fb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path><path d="M12 15V3"></path></svg>Export</button>
+        <sc-if value="{{ notInsights }}" hint-placeholder-val="{{ true }}"><button style="display:inline-flex;align-items:center;gap:8px;height:42px;white-space:nowrap;flex:none;padding:0 18px;border:0;border-radius:8px;background:#2563eb;color:#fff;font:600 15px var(--font-body);cursor:pointer" style-hover="background:#1d4fd0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>New phone order</button></sc-if>
+      </div>
+    </header>
+
+    <div style="padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:20px">
+    <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px">
+        <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:13px;color:#6b7280;font-weight:500">{{ k.label }}</span>
+            <span style="font-size:30px;font-weight:700;line-height:1;color:#111827;font-variant-numeric:tabular-nums">{{ k.value }}</span>
+            <span style="font-size:12.5px;color:{{ k.deltaColor }}">{{ k.delta }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:16px;flex:1">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+            <div><span style="font-size:13px;color:#6b7280;font-weight:500">Revenue · last 14 days</span><div style="font-size:26px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:4px">€24,870 <span style="font-size:13px;font-weight:600;color:#16a34a">+18% vs prior</span></div></div>
+            <span style="font-size:12px;color:#9ca3af">Hover a bar</span>
+          </div>
+          <div style="height:200px;display:flex;align-items:flex-end;gap:8px;border-bottom:1px solid #e6e9f0">
+            <sc-for list="{{ bars }}" as="b" hint-placeholder-count="14">
+              <div title="{{ b.tip }}" style="flex:1;height:{{ b.h }};background:{{ b.fill }};border-radius:6px 6px 0 0" style-hover="background:#1d4fd0"></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:8px;font-size:11px;color:#9ca3af;font-variant-numeric:tabular-nums">
+            <sc-for list="{{ bars }}" as="b" hint-placeholder-count="14"><span style="flex:1;text-align:center">{{ b.d }}</span></sc-for>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><span style="font-size:14px;color:#111827"><strong style="font-weight:600">Google this week:</strong> 1,240 clicks <span style="color:#16a34a;font-weight:600">▲ 8%</span> · 31 orders from search</span><button onClick="{{ goInsights }}" style="border:0;background:transparent;color:#2563eb;font:600 13px var(--font-body);cursor:pointer;padding:4px 0;white-space:nowrap" style-hover="color:#1d4fd0">View insights →</button></div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:16px;font-weight:600">Today's delivery slots</span><span style="font-size:12px;color:#6b7280">97.4% on time</span></div>
+          <div style="display:flex;flex-direction:column">
+            <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="6">
+              <button onClick="{{ s.open }}" style="display:grid;grid-template-columns:58px 1fr auto;gap:12px;align-items:center;padding:10px 6px;border:0;border-bottom:1px solid #eef0f4;background:transparent;text-align:left;cursor:pointer;font-family:var(--font-body);color:#111827;border-radius:6px" style-hover="background:#f5f7fb">
+                <span style="font-size:15px;font-weight:700;color:#2563eb;font-variant-numeric:tabular-nums">{{ s.slot }}</span>
+                <span style="display:flex;flex-direction:column;font-size:13px;line-height:1.4"><span style="font-weight:500">{{ s.product }} → {{ s.recipient }}</span><span style="color:#6b7280;font-size:12px">{{ s.area }} · {{ s.rider }}</span></span>
+                <span style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:{{ s.pillBg }};color:{{ s.pillFg }};white-space:nowrap">{{ s.status }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <div><span style="font-size:16px;font-weight:600">Bouquet photos waiting to be sent</span><div style="font-size:13px;color:#6b7280;margin-top:2px">Senders receive these on WhatsApp &amp; email before delivery</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:16px">
+          <sc-for list="{{ pendingPhotos }}" as="o" hint-placeholder-count="4">
+            <div style="border:1px solid #e6e9f0;border-radius:10px;overflow:hidden;display:flex;flex-direction:column">
+              <img src="{{ o.img }}" alt="{{ o.product }}" style="width:100%;aspect-ratio:4/3;object-fit:cover;background:#eceef2;display:block">
+              <div style="padding:12px;display:flex;flex-direction:column;gap:10px">
+                <span style="font-size:13px;line-height:1.4"><strong style="font-weight:600">{{ o.id }}</strong> · {{ o.product }}<br><span style="color:#6b7280;font-size:12px">for {{ o.customer }} · slot {{ o.slot }}</span></span>
+                <div style="display:flex;gap:6px"><button onClick="{{ o.approve }}" style="display:inline-flex;align-items:center;gap:8px;height:42px;white-space:nowrap;flex:none;padding:0 18px;border:0;border-radius:8px;background:#2563eb;color:#fff;font:600 15px var(--font-body);cursor:pointer;height:36px;font-size:13px;flex:1;justify-content:center" style-hover="background:#1d4fd0">Send photo</button><button onClick="{{ o.open }}" style="display:inline-flex;align-items:center;gap:8px;height:42px;white-space:nowrap;flex:none;padding:0 16px;border:1px solid #e3e7ee;border-radius:8px;background:#fff;color:#1f2937;font:500 14px var(--font-body);cursor:pointer;height:36px;font-size:13px" style-hover="background:#f5f7fb">Open</button></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ noPending }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:14px;color:#6b7280">All photos sent. Nicely done.</p></sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ showTable }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid #e6e9f0">
+          <span style="font-size:16px;font-weight:600">{{ tableTitle }}</span>
+          <div style="display:flex;border:1px solid #e3e7ee;border-radius:8px;overflow:hidden;flex-wrap:wrap">
+            <sc-for list="{{ statusFilters }}" as="f" hint-placeholder-count="5">
+              <button onClick="{{ f.pick }}" style="display:flex;gap:6px;align-items:center;padding:8px 14px;border:0;border-right:1px solid #e3e7ee;background:{{ f.bg }};color:{{ f.fg }};font:500 13px var(--font-body);cursor:pointer">{{ f.label }} <span style="opacity:.7;font-variant-numeric:tabular-nums">{{ f.n }}</span></button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;min-width:860px;border-collapse:collapse;font-size:14px">
+            <thead><tr style="background:#f9fafb;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:.06em;text-align:left"><th style="padding:12px 20px;font-weight:600">Order</th><th style="padding:12px;font-weight:600">Sender</th><th style="padding:12px;font-weight:600">Recipient</th><th style="padding:12px;font-weight:600">Bouquet</th><th style="padding:12px;font-weight:600">Slot</th><th style="padding:12px;font-weight:600;text-align:right">Total</th><th style="padding:12px;font-weight:600">Status</th><th style="padding:12px 20px"></th></tr></thead>
+            <tbody>
+              <sc-for list="{{ rows }}" as="o" hint-placeholder-count="8">
+                <tr onClick="{{ o.open }}" style="cursor:pointer;border-top:1px solid #eef0f4" style-hover="background:#f5f8ff">
+                  <td style="padding:12px 20px;font-variant-numeric:tabular-nums"><strong style="font-weight:600">{{ o.id }}</strong><br><span style="font-size:12px;color:#6b7280">{{ o.placed }}</span></td>
+                  <td style="padding:12px">{{ o.customer }}<br><span style="font-size:12px;color:#6b7280">{{ o.country }}</span></td>
+                  <td style="padding:12px">{{ o.recipient }}<br><span style="font-size:12px;color:#6b7280">{{ o.area }}</span></td>
+                  <td style="padding:12px"><span style="display:flex;align-items:center;gap:10px"><sc-if value="{{ thumbs }}" hint-placeholder-val="{{ true }}"><img src="{{ o.thumb }}" alt="" style="width:38px;height:38px;object-fit:cover;border-radius:8px;background:#eceef2"></sc-if>{{ o.product }}</span></td>
+                  <td style="padding:12px;font-variant-numeric:tabular-nums">{{ o.slot }}<br><span style="font-size:12px;color:#6b7280">{{ o.rider }}</span></td>
+                  <td style="padding:12px;text-align:right;font-weight:600;font-variant-numeric:tabular-nums">€{{ o.total }}</td>
+                  <td style="padding:12px"><span style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:{{ o.pillBg }};color:{{ o.pillFg }};white-space:nowrap">{{ o.status }}</span></td>
+                  <td style="padding:12px 20px;text-align:right;color:#2563eb">→</td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <sc-if value="{{ emptyRows }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:24px 20px;font-size:14px;color:#6b7280">No orders match.</p></sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isInsights }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:4px;border-bottom:1px solid #e6e9f0">
+          <sc-for list="{{ insTabs }}" as="t" hint-placeholder-count="3">
+            <button onClick="{{ t.pick }}" style="padding:10px 16px;margin-bottom:-1px;border:0;border-bottom:2px solid {{ t.rule }};background:transparent;color:{{ t.fg }};font:600 14px var(--font-body);cursor:pointer" style-hover="color:#2563eb">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <p style="margin:0;font-size:12.5px;color:#6b7280">Search data from Google Search Console · updated daily · 2-day delay</p>
+      </div>
+
+      <sc-if value="{{ isSeo }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px">
+        <sc-for list="{{ insKpis }}" as="k" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:13px;color:#6b7280;font-weight:500">{{ k.label }}</span>
+            <span style="font-size:30px;font-weight:700;line-height:1;color:#111827;font-variant-numeric:tabular-nums">{{ k.value }}</span>
+            <span style="font-size:12.5px;color:#16a34a">{{ k.delta }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:stretch">
+        <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;flex:2 1 520px;min-width:0;padding:20px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+            <div><span style="font-size:16px;font-weight:600">Search performance</span><div style="font-size:13px;color:#6b7280;margin-top:4px;font-variant-numeric:tabular-nums"><strong style="color:#111827;font-weight:700;font-size:15px">3,410</strong> clicks · <strong style="color:#111827;font-weight:700;font-size:15px">96,200</strong> impressions · <strong style="color:#111827;font-weight:700;font-size:15px">3.5%</strong> CTR</div></div>
+            <div style="display:flex;gap:16px;font-size:12.5px;color:#6b7280"><span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:3px;border-radius:2px;background:#2563eb"></span>Clicks</span><span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:3px;border-radius:2px;background:#a9c6fb"></span>Impressions</span></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <div style="display:flex;flex-direction:column;justify-content:space-between;height:240px;font-size:11px;color:#9ca3af;text-align:right;width:28px;font-variant-numeric:tabular-nums"><sc-for list="{{ yLeft }}" as="y" hint-placeholder-count="5"><span style="line-height:0">{{ y }}</span></sc-for></div>
+            <div onMouseLeave="{{ clearHover }}" style="position:relative;flex:1;height:240px">
+              <svg viewBox="0 0 1000 240" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+                <path d="M0 0H1000M0 60H1000M0 120H1000M0 180H1000M0 240H1000" stroke="#eef0f4" stroke-width="1" vector-effect="non-scaling-stroke"></path>
+                <path d="{{ imprPath }}" fill="none" stroke="#a9c6fb" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path>
+                <path d="{{ clickArea }}" fill="#2563eb" fill-opacity="0.06"></path>
+                <path d="{{ clickPath }}" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path>
+              </svg>
+              <sc-if value="{{ hasHover }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;top:0;bottom:0;left:{{ hov.left }};width:1px;background:#c7d2fe;pointer-events:none"></div>
+                <div style="position:absolute;left:{{ hov.left }};top:{{ hov.iy }};width:9px;height:9px;margin:-5px 0 0 -5px;border-radius:50%;background:#fff;border:2px solid #a9c6fb;pointer-events:none"></div>
+                <div style="position:absolute;left:{{ hov.left }};top:{{ hov.cy }};width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#2563eb;border:2px solid #fff;box-shadow:0 0 0 1px #2563eb;pointer-events:none"></div>
+                <div style="position:absolute;top:6px;left:{{ hov.left }};transform:{{ hov.shift }};margin:0 12px;background:#111827;color:#fff;border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.55;white-space:nowrap;pointer-events:none;box-shadow:0 8px 20px rgba(0,0,0,.18);font-variant-numeric:tabular-nums">
+                  <div style="font-weight:600;margin-bottom:2px">{{ hov.date }}</div>
+                  <div style="display:flex;justify-content:space-between;gap:16px"><span>Clicks</span><strong>{{ hov.clicks }}</strong></div>
+                  <div style="display:flex;justify-content:space-between;gap:16px"><span>Impressions</span><strong>{{ hov.impr }}</strong></div>
+                  <div style="display:flex;justify-content:space-between;gap:16px"><span>CTR</span><strong>{{ hov.ctr }}</strong></div>
+                </div>
+              </sc-if>
+              <div style="position:absolute;inset:0;display:flex">
+                <sc-for list="{{ chartPts }}" as="p" hint-placeholder-count="28"><div onMouseEnter="{{ p.enter }}" style="flex:1;height:100%"></div></sc-for>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:space-between;height:240px;font-size:11px;color:#9ca3af;width:34px;font-variant-numeric:tabular-nums"><sc-for list="{{ yRight }}" as="y" hint-placeholder-count="5"><span style="line-height:0">{{ y }}</span></sc-for></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:#9ca3af;padding:0 42px 0 36px">
+            <sc-for list="{{ xLabels }}" as="x" hint-placeholder-count="5"><span>{{ x }}</span></sc-for>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;flex:1 1 280px;min-width:0;padding:20px;display:flex;flex-direction:column;gap:4px">
+          <span style="font-size:16px;font-weight:600;margin-bottom:8px">Site health</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #eef0f4"><span style="font-size:14px;color:#374151">Indexed pages</span><span style="font-size:15px;font-weight:700;color:#16a34a;font-variant-numeric:tabular-nums">142 <span style="color:#9ca3af;font-weight:500">/ 150</span></span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #eef0f4"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;color:#374151">Crawl errors</span><a href="https://search.google.com/search-console" target="_blank" style="font-size:12.5px;font-weight:600;text-decoration:none">View in Search Console →</a></div><span style="font-size:15px;font-weight:700;color:#b45309">3</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px;padding:12px 0;border-bottom:1px solid #eef0f4">
+            <span style="font-size:14px;color:#374151">Core Web Vitals · mobile</span>
+            <sc-for list="{{ vitals }}" as="v" hint-placeholder-count="3">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span style="font-size:13px;color:#6b7280;font-variant-numeric:tabular-nums"><strong style="color:#111827;font-weight:600">{{ v.k }}</strong> {{ v.v }}</span><span style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap;background:{{ v.bg }};color:{{ v.fg }}">{{ v.label }}</span></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0"><span style="font-size:14px;color:#374151">Sitemap</span><span style="font-size:13px;font-weight:600;color:#16a34a">Last read 2 days ago</span></div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:16px">
+        <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="padding:16px 20px;border-bottom:1px solid #e6e9f0;font-size:16px;font-weight:600">Top search queries</div>
+          <div style="overflow-x:auto"><table style="width:100%;min-width:480px;border-collapse:collapse;font-size:14px">
+            <thead><tr style="background:#f9fafb;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:.06em;text-align:left"><th style="padding:12px;font-weight:600;padding-left:20px">Query</th><th style="padding:12px;font-weight:600;text-align:right">Clicks</th><th style="padding:12px;font-weight:600;text-align:right">Impr.</th><th style="padding:12px;font-weight:600;text-align:right">CTR</th><th style="padding:12px;font-weight:600;text-align:right;padding-right:20px">Position</th></tr></thead>
+            <tbody><sc-for list="{{ queries }}" as="q" hint-placeholder-count="5"><tr style="border-top:1px solid #eef0f4" style-hover="background:#f5f8ff"><td style="padding:12px;padding-left:20px;font-weight:500">{{ q.q }}</td><td style="padding:12px;text-align:right;font-variant-numeric:tabular-nums;font-weight:600">{{ q.c }}</td><td style="padding:12px;text-align:right;font-variant-numeric:tabular-nums;color:#6b7280">{{ q.i }}</td><td style="padding:12px;text-align:right;font-variant-numeric:tabular-nums">{{ q.ctr }}</td><td style="padding:12px;text-align:right;font-variant-numeric:tabular-nums;padding-right:20px">{{ q.p }}</td></tr></sc-for></tbody>
+          </table></div>
+          <div style="padding:14px 20px;border-top:1px solid #eef0f4;margin-top:auto"><a href="#" style="font-size:13px;font-weight:600;text-decoration:none">View all queries →</a></div>
+        </div>
+        <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="padding:16px 20px;border-bottom:1px solid #e6e9f0;font-size:16px;font-weight:600">Top landing pages</div>
+          <div style="overflow-x:auto"><table style="width:100%;min-width:460px;border-collapse:collapse;font-size:14px">
+            <thead><tr style="background:#f9fafb;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:.06em;text-align:left"><th style="padding:12px;font-weight:600;padding-left:20px">Page</th><th style="padding:12px;font-weight:600;text-align:right">Visitors</th><th style="padding:12px;font-weight:600;text-align:right">Orders</th><th style="padding:12px;font-weight:600;text-align:right;padding-right:20px">Revenue</th></tr></thead>
+            <tbody><sc-for list="{{ landing }}" as="l" hint-placeholder-count="5"><tr style="border-top:1px solid #eef0f4" style-hover="background:#f5f8ff"><td style="padding:12px;padding-left:20px;font-weight:500;color:#1d4ed8">{{ l.p }} <span style="color:#9ca3af;font-weight:400">{{ l.note }}</span></td><td style="padding:12px;text-align:right;font-variant-numeric:tabular-nums">{{ l.v }}</td><td style="padding:12px;text-align:right;font-variant-numeric:tabular-nums">{{ l.o }}</td><td style="padding:12px;text-align:right;font-variant-numeric:tabular-nums;font-weight:600;padding-right:20px">{{ l.r }}</td></tr></sc-for></tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid #e6e9f0">
+          <div><span style="font-size:16px;font-weight:600">Tracked keywords</span><div style="font-size:13px;color:#6b7280;margin-top:2px">Average Google position over the last 28 days · Italy</div></div>
+          <button style="display:inline-flex;align-items:center;gap:8px;height:36px;white-space:nowrap;flex:none;padding:0 14px;border:0;border-radius:8px;background:#2563eb;color:#fff;font:600 13px var(--font-body);cursor:pointer" style-hover="background:#1d4fd0">+ Add keyword</button>
+        </div>
+        <div style="overflow-x:auto"><table style="width:100%;min-width:900px;border-collapse:collapse;font-size:14px">
+          <thead><tr style="background:#f9fafb;color:#6b7280;font-size:12px;text-transform:uppercase;letter-spacing:.06em;text-align:left"><th style="padding:12px;font-weight:600;padding-left:20px">Keyword</th><th style="padding:12px;font-weight:600">Language</th><th style="padding:12px;font-weight:600;text-align:right">Position</th><th style="padding:12px;font-weight:600;text-align:right">Change</th><th style="padding:12px;font-weight:600">28-day trend</th><th style="padding:12px;font-weight:600;padding-right:20px">Best page</th></tr></thead>
+          <tbody><sc-for list="{{ keywords }}" as="k" hint-placeholder-count="8"><tr style="border-top:1px solid #eef0f4" style-hover="background:#f5f8ff">
+            <td style="padding:12px;padding-left:20px;font-weight:500">{{ k.kw }}</td>
+            <td style="padding:12px"><span style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap;background:{{ k.lbg }};color:{{ k.lfg }}">{{ k.lang }}</span></td>
+            <td style="padding:12px;text-align:right;font-variant-numeric:tabular-nums;font-weight:700">{{ k.pos }}</td>
+            <td style="padding:12px;text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:{{ k.cColor }}">{{ k.change }}</td>
+            <td style="padding:12px"><svg width="120" height="28" viewBox="0 0 100 28" preserveAspectRatio="none" style="display:block"><path d="{{ k.spark }}" fill="none" stroke="{{ k.cColor }}" stroke-width="1.6" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path></svg></td>
+            <td style="padding:12px;padding-right:20px;color:#1d4ed8;font-size:13px">{{ k.page }}</td>
+          </tr></sc-for></tbody>
+        </table></div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ notSeo }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;padding:48px 24px;text-align:center;color:#6b7280;font-size:14px">{{ insTab }} insights are not connected yet.</div>
+      </sc-if>
+    </sc-if>
+
+    <sc-if value="{{ isCatalogue }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:16px">
+        <sc-for list="{{ catalogue }}" as="p" hint-placeholder-count="8">
+          <div style="background:#fff;border:1px solid #e6e9f0;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;opacity:{{ p.opacity }}">
+            <img src="{{ p.img }}" alt="{{ p.name }}" style="width:100%;aspect-ratio:4/3;object-fit:cover;background:#eceef2;display:block">
+            <div style="padding:14px 16px;display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><span style="font-size:16px;font-weight:600">{{ p.name }}</span><span style="font-size:18px;font-weight:700;color:#2563eb;font-variant-numeric:tabular-nums">€{{ p.price }}</span></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px;color:#6b7280;font-variant-numeric:tabular-nums">
+                <span>Sold this week<br><span style="font-size:16px;font-weight:600;color:#111827">{{ p.sold }}</span></span>
+                <span>Stems in cold room<br><span style="font-size:16px;font-weight:600;color:{{ p.stockColor }}">{{ p.stock }}</span></span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px solid #eef0f4;padding-top:12px">
+                <span style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:{{ p.pillBg }};color:{{ p.pillFg }}">{{ p.state }}</span>
+                <button onClick="{{ p.toggle }}" style="border:0;background:transparent;color:#2563eb;font:600 13px var(--font-body);cursor:pointer;padding:6px 4px">{{ p.toggleLabel }}</button>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    </div>
+  </main>
+
+  <sc-if value="{{ hasSelected }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:50;background:rgba(17,24,39,.55);display:grid;place-items:center;padding:20px">
+      <div onClick="{{ stop }}" style="background:#fff;border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.2);padding:24px;width:min(760px,100%);max-height:90vh;overflow:auto;display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+          <div><span style="font-size:13px;color:#6b7280;font-weight:500">Order {{ sel.id }} · placed {{ sel.placed }}</span><div style="font-size:22px;font-weight:700;margin-top:4px">{{ sel.product }} for {{ sel.recipient }}</div></div>
+          <button onClick="{{ close }}" aria-label="Close" style="width:36px;height:36px;border:1px solid #e3e7ee;border-radius:8px;background:#fff;cursor:pointer;font-size:14px">✕</button>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px">
+          <figure style="margin:0;display:flex;flex-direction:column;gap:8px"><img src="{{ sel.img }}" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;background:#eceef2"><figcaption style="font-size:12px;color:#6b7280">Workshop photo · {{ sel.photoNote }}</figcaption></figure>
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:14px">
+            <div><span style="font-size:13px;color:#6b7280;font-weight:500">Sender</span><div style="font-weight:500">{{ sel.customer }} · {{ sel.country }}</div><div style="font-size:13px;color:#6b7280">{{ sel.email }}</div></div>
+            <div><span style="font-size:13px;color:#6b7280;font-weight:500">Deliver to</span><div style="font-weight:500">{{ sel.recipient }}</div><div style="font-size:13px;color:#6b7280">{{ sel.address }}</div></div>
+            <div><span style="font-size:13px;color:#6b7280;font-weight:500">Slot</span><div style="font-variant-numeric:tabular-nums">Today {{ sel.slot }} · exact ±15 min · {{ sel.rider }}</div></div>
+            <div><span style="font-size:13px;color:#6b7280;font-weight:500">Card message</span><div style="margin-top:4px;padding:12px;background:#f5f8ff;border-radius:8px;font-style:italic;line-height:1.45">“{{ sel.message }}”</div></div>
+            <div style="display:flex;justify-content:space-between;border-top:1px solid #eef0f4;padding-top:12px"><span>Total paid</span><span style="font-weight:700;font-variant-numeric:tabular-nums">€{{ sel.total }}</span></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;font-size:12px">
+          <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="5">
+            <span style="flex:1 1 100px;padding-top:8px;border-top:3px solid {{ t.rule }};color:{{ t.color }};font-weight:500">{{ t.label }}</span>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px">
+          <button onClick="{{ close }}" style="display:inline-flex;align-items:center;gap:8px;height:42px;white-space:nowrap;flex:none;padding:0 16px;border:1px solid #e3e7ee;border-radius:8px;background:#fff;color:#1f2937;font:500 14px var(--font-body);cursor:pointer" style-hover="background:#f5f7fb">Close</button>
+          <sc-if value="{{ canAdvance }}" hint-placeholder-val="{{ true }}"><button onClick="{{ advance }}" style="display:inline-flex;align-items:center;gap:8px;height:42px;white-space:nowrap;flex:none;padding:0 18px;border:0;border-radius:8px;background:#2563eb;color:#fff;font:600 15px var(--font-body);cursor:pointer" style-hover="background:#1d4fd0">{{ advanceLabel }}</button></sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Overview&quot;,&quot;Orders&quot;,&quot;Catalogue&quot;,&quot;Insights&quot;],&quot;default&quot;:&quot;Overview&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showThumbnails&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const FLOW = ['Awaiting photo', 'Photo sent', 'Approved', 'Out for delivery', 'Delivered'];
+const NEXT = { 'Awaiting photo': 'Send photo to sender', 'Photo sent': 'Mark approved', 'Approved': 'Hand to rider', 'Out for delivery': 'Mark delivered' };
+const PILL = { 'Awaiting photo': ['#fff4e5', '#b45309'], 'Photo sent': ['#eaf1fe', '#1d4ed8'], 'Approved': ['#ede9fe', '#6d28d9'], 'Out for delivery': ['#e0f2fe', '#0369a1'], 'Delivered': ['#dcfce7', '#15803d'] };
+const TAG = { 'Awaiting photo': 'tag-accent', 'Photo sent': 'tag-outline', 'Approved': 'tag-neutral', 'Out for delivery': 'tag-outline', 'Delivered': 'tag-neutral' };
+const P = { redroses: 'photo-1589095181425-c038b3871b6a', bouquet: 'photo-1572454591674-2739f30d8c40', orchid: 'photo-1561848355-890d054dc55a', peony: 'photo-1561181286-d3fee7d55364', tulips: 'photo-1776193550326-fb87ffba0442', sunflowers: 'photo-1778101410311-6cca527142d6', whiteroses: 'photo-1523693916903-027d144a2b7d', olivetree: 'photo-1763073064881-9bf81eadd3e2', mimosa: 'photo-1782647862359-9feecdd97933', dried: 'photo-1622658641558-235f26dd270b', love: 'photo-1533616688419-b7a585564566', birthday: 'photo-1782647862359-9feecdd97933', thanks: 'photo-1762969217496-32d784e7e557', sympathy: 'photo-1561848355-890d054dc55a', baby: 'photo-1582794543139-8ac9cb0f7b11', getwell: 'photo-1763073064881-9bf81eadd3e2' };
+const img = (k, n, w = 400, h = 400) => `https://images.unsplash.com/${P[k] || P.bouquet}?w=${w}&h=${h}&fit=crop&q=75&auto=format`;
+const SEED = [
+  ['RF-24817', '08:12', 'Sofia Ricci', 'Canada', 'Anna Ricci', 'Trastevere', 'Via della Lungaretta 14, 00153', 'Rosa Classica', '09:00', 49, 'Delivered', 'Marco', 'redroses', 'Buon ottantesimo compleanno, mamma. Ti penso ogni giorno.'],
+  ['RF-24821', '09:40', 'Jonas Müller', 'Germany', 'Giulia Conti', 'Prati', 'Via Cola di Rienzo 88, 00192', 'Peonia Rosa', '12:30', 74, 'Out for delivery', 'Luca', 'peony', 'Happy birthday, amore. Three weeks until Rome.'],
+  ['RF-24826', '10:05', 'Priya Shah', 'United Kingdom', 'Elena Rossi', 'Monti', 'Via del Boschetto 9, 00184', "Giardino d'autunno", '13:15', 58, 'Approved', 'Luca', 'bouquet', 'Thank you for everything this year. — Priya & the London team'],
+  ['RF-24830', '10:51', 'Michael Brennan', 'United States', 'Francesca Bianchi', 'Parioli', 'Viale Parioli 3, 00197', 'Rosa e Panna', '15:00', 88, 'Photo sent', 'Sara', 'whiteroses', 'Con tutto il mio amore, oggi e sempre.'],
+  ['RF-24833', '11:20', 'Tanvir Ahmed', 'Bangladesh', 'Sara Moretti', 'EUR', 'Viale Europa 21, 00144', 'Tramonto', '16:30', 42, 'Awaiting photo', 'Sara', 'tulips', 'Congratulations on the new job! Proud of you.'],
+  ['RF-24835', '11:48', 'Claire Dubois', 'France', 'Marta Galli', 'Testaccio', 'Via Marmorata 40, 00153', 'Avorio', '17:45', 71, 'Awaiting photo', 'Marco', 'orchid', 'Get well soon — the office isn’t the same without you.'],
+  ['RF-24838', '12:15', 'Daniel Kim', 'South Korea', 'Lucia Ferri', 'San Lorenzo', 'Via dei Volsci 12, 00185', 'Peonia Rosa', '19:30', 65, 'Awaiting photo', 'Luca', 'peony', '100 days together. Many more to come.'],
+  ['RF-24840', '12:42', 'Emma Lindqvist', 'Sweden', 'Chiara Romano', 'Prati', 'Via Ottaviano 60, 00192', 'Girasoli', '20:00', 39, 'Awaiting photo', 'Sara', 'sunflowers', 'Un piccolo sole per la tua giornata.'],
+  ['RF-24843', '13:05', 'Ahmed Hassan', 'UAE', 'Valentina Greco', 'Trastevere', 'Piazza di Santa Maria in Trastevere 7, 00153', 'Rosa Classica', '23:45', 58, 'Photo sent', 'Marco', 'redroses', 'Will you marry me? (Look behind you.)'],
+  ['RF-24846', '13:31', 'Olivia Martin', 'Australia', 'Paola Esposito', 'Testaccio', 'Via Galvani 55, 00153', 'Campo Toscano', 'Next day', 54, 'Approved', 'Courier', 'olivetree', 'For your new garden. Love from Sydney.']
+];
+const DAYS = 28, START = Date.UTC(2026, 8, 25);
+const fmtD = (i, o) => new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', ...o }).format(new Date(START + i * 864e5));
+const norm = (arr, total) => { const f = total / arr.reduce((x, y) => x + y, 0); const r = arr.map(v => Math.round(v * f)); r[r.length - 1] += total - r.reduce((x, y) => x + y, 0); return r; };
+const CLICKS = norm(Array.from({ length: DAYS }, (_, i) => { const dow = new Date(START + i * 864e5).getUTCDay(); return 96 + i * 1.4 + (dow === 5 || dow === 6 ? 24 : 0) + ((i * 37) % 13) - 6; }), 3410);
+const IMPR = norm(Array.from({ length: DAYS }, (_, i) => 2900 + i * 26 + ((i * 53) % 17) * 38 + (CLICKS[i] - 120) * 9), 96200);
+const CMAX = 200, IMAX = 5000;
+const line = (arr, max) => arr.map((v, i) => (i ? 'L' : 'M') + (i / (DAYS - 1) * 1000).toFixed(1) + ' ' + (240 - v / max * 240).toFixed(1)).join(' ');
+const KW = [
+  ['fiori a domicilio roma', 'IT', 4.2, 1.8, '/consegna-fiori-roma'],
+  ['consegna fiori oggi roma', 'IT', 6.1, 2.4, '/consegna-fiori-roma'],
+  ['fiori per compleanno roma', 'IT', 8.7, -1.2, '/occasioni/compleanno'],
+  ['send flowers to italy from abroad', 'EN', 5.3, 3.1, '/send-flowers-to-italy'],
+  ['anniversary flowers rome', 'EN', 11.4, 0.9, '/occasions/anniversary'],
+  ['fioraio online roma', 'IT', 3.8, 0.6, '/'],
+  ['birthday flowers italy delivery', 'EN', 14.2, -2.3, '/occasions/birthday'],
+  ['mazzo di fiori roma', 'IT', 7.5, 1.1, '/bouquet/rosa-classica']
+];
+const spark = (pos, ch, seed) => { const pts = Array.from({ length: DAYS }, (_, i) => pos + ch * (1 - i / (DAYS - 1)) + (((i + seed) * 29) % 7 - 3) * 0.18); const mn = Math.min(...pts), mx = Math.max(...pts); return pts.map((v, i) => (i ? 'L' : 'M') + (i / (DAYS - 1) * 100).toFixed(1) + ' ' + (3 + (v - mn) / ((mx - mn) || 1) * 22).toFixed(1)).join(' '); };
+class Component extends DCLogic {
+  state = {
+    view: this.props.defaultView ?? 'Overview', status: 'All', query: '', selected: null, clock: '', insTab: 'SEO', range: '28 days', hover: null,
+    orders: SEED.map(([id, placed, customer, country, recipient, area, address, product, slot, total, status, rider, k, message], i) =>
+      ({ id, placed, customer, country, recipient, area, address, product, slot, total, status, rider, k, message, n: 300 + i,
+         email: customer.toLowerCase().replace(/[^a-z]+/g, '.') + '@mail.com' })),
+    off: { 'Tramonto': false, 'Campo Toscano': false, 'Mimosa': true }
+  };
+  componentDidMount() {
+    const t = () => this.setState({ clock: new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Rome', hour: '2-digit', minute: '2-digit' }).format(new Date()) });
+    t(); this.iv = setInterval(t, 30000);
+  }
+  componentDidUpdate(pp) { if (pp.defaultView !== this.props.defaultView && this.props.defaultView) this.setState({ view: this.props.defaultView }); }
+  componentWillUnmount() { clearInterval(this.iv); }
+  advance(id) {
+    this.setState(s => ({ orders: s.orders.map(o => o.id === id ? { ...o, status: FLOW[Math.min(FLOW.indexOf(o.status) + 1, FLOW.length - 1)] } : o) }));
+  }
+  renderVals() {
+    const { view, orders, status, query, selected, off } = this.state;
+    const deco = o => ({ ...o, tagClass: TAG[o.status], pillBg: PILL[o.status][0], pillFg: PILL[o.status][1], thumb: img(o.k, o.n, 120, 120), img: img(o.k, o.n, 600, 600), open: () => this.setState({ selected: o.id }) });
+    const counts = s => orders.filter(o => o.status === s).length;
+    const q = query.trim().toLowerCase();
+    let rows = orders.filter(o => (status === 'All' || o.status === status) && (!q || [o.id, o.customer, o.recipient, o.product, o.area].join(' ').toLowerCase().includes(q)));
+    if (view === 'Overview') rows = rows.slice(-6).reverse();
+    const pending = orders.filter(o => o.status === 'Awaiting photo').map(o => ({ ...deco(o), approve: () => this.advance(o.id) }));
+    const rev = [1420, 1610, 1380, 1890, 2240, 2980, 2110, 1540, 1720, 1650, 1980, 2310, 3140, 2486];
+    const max = Math.max(...rev);
+    const bars = rev.map((v, i) => ({ h: Math.round(v / max * 100) + '%', d: 11 + i, tip: `${11 + i} Oct · €${v.toLocaleString('en')}`, fill: i === rev.length - 1 ? '#2563eb' : '#bfd3fb' }));
+    const sel = orders.find(o => o.id === selected);
+    const selIdx = sel ? FLOW.indexOf(sel.status) : -1;
+    const products = [
+      ['Rosa Classica', 49, 'redroses', 142, 310], ["Giardino d'autunno", 58, 'bouquet', 96, 180], ['Avorio', 62, 'orchid', 41, 18],
+      ['Peonia Rosa', 65, 'peony', 118, 64], ['Tramonto', 42, 'tulips', 57, 240], ['Girasoli', 39, 'sunflowers', 49, 22],
+      ['Rosa e Panna', 79, 'whiteroses', 73, 190], ['Campo Toscano', 54, 'olivetree', 12, 6], ['Mimosa', 35, 'mimosa', 0, 0]
+    ];
+    const totalToday = orders.reduce((a, o) => a + o.total, 0);
+    return {
+      clock: this.state.clock, query,
+      onQuery: e => this.setState({ query: e.target.value, view: view === 'Catalogue' ? 'Orders' : view }),
+      title: view === 'Overview' ? 'Dashboard' : view === 'Orders' ? 'Orders' : view === 'Insights' ? 'Insights' : 'Catalogue',
+      subtitle: view === 'Insights' ? 'How customers find romafiorita.com online' : view === 'Overview' ? 'Buongiorno, Chiara — here’s today at the workshop.' : view === 'Orders' ? 'Track every bouquet from photo to doorstep.' : 'Manage bouquets, prices and cold-room stock.',
+      ...Object.fromEntries([['navO', 'Overview', ''], ['navR', 'Orders', orders.length], ['navC', 'Catalogue', products.length], ['navI', 'Insights', '']].map(([k, label, count]) => [k, {
+        count, bg: view === label ? '#2563eb' : 'transparent', fg: view === label ? '#ffffff' : '#d1d5db', hover: view === label ? '#2563eb' : '#1f2937',
+        go: () => this.setState({ view: label }) }])),
+      nav: [['Overview', ''], ['Orders', orders.length], ['Catalogue', products.length]].map(([label, count]) => ({
+        label, count, rule: view === label ? 'var(--color-accent)' : 'transparent', color: view === label ? 'var(--color-accent-700)' : 'var(--color-text)',
+        go: () => this.setState({ view: label }) })),
+      riders: [['Marco', 'On route · 2', 'man,portrait', 41], ['Luca', 'On route · 1', 'man,face', 42], ['Sara', 'At workshop', 'woman,face', 43]].map(([name, state, k, n]) => ({ name, state, initial: name[0] })),
+      isOverview: view === 'Overview', isCatalogue: view === 'Catalogue', showTable: view === 'Overview' || view === 'Orders',
+      isInsights: view === 'Insights', notInsights: view !== 'Insights', goInsights: () => this.setState({ view: 'Insights' }),
+      ranges: ['7 days', '28 days', '90 days'].map(r => ({ label: r, bg: this.state.range === r ? '#eaf1fe' : '#fff', fg: this.state.range === r ? '#1d4ed8' : '#374151', pick: () => this.setState({ range: r }) })),
+      insTab: this.state.insTab, isSeo: this.state.insTab === 'SEO', notSeo: this.state.insTab !== 'SEO',
+      insTabs: ['SEO', 'Sales', 'Marketing'].map(t => ({ label: t, rule: this.state.insTab === t ? '#2563eb' : 'transparent', fg: this.state.insTab === t ? '#2563eb' : '#6b7280', pick: () => this.setState({ insTab: t }) })),
+      insKpis: [
+        { label: 'Organic visitors', value: '4,820', delta: '▲ 14% vs previous 28 days' },
+        { label: 'Orders from Google', value: '126', delta: '▲ 9% · 2.6% conversion' },
+        { label: 'Organic revenue', value: '€8,940', delta: '▲ 11% vs previous period' },
+        { label: 'Avg. Google position', value: '12.4', delta: '▲ improved 2.1 positions' }
+      ],
+      clickPath: line(CLICKS, CMAX), imprPath: line(IMPR, IMAX), clickArea: line(CLICKS, CMAX) + ' L1000 240 L0 240 Z',
+      yLeft: ['200', '150', '100', '50', '0'], yRight: ['5k', '3.75k', '2.5k', '1.25k', '0'],
+      xLabels: [0, 7, 14, 21, 27].map(i => fmtD(i, { day: 'numeric', month: 'short' })),
+      chartPts: CLICKS.map((_, i) => ({ enter: () => this.setState({ hover: i }) })),
+      clearHover: () => this.setState({ hover: null }),
+      hasHover: this.state.hover != null,
+      hov: this.state.hover == null ? {} : (() => { const i = this.state.hover; return {
+        left: (i / (DAYS - 1) * 100) + '%', cy: (100 - CLICKS[i] / CMAX * 100) + '%', iy: (100 - IMPR[i] / IMAX * 100) + '%',
+        shift: i > DAYS / 2 ? 'translateX(calc(-100% - 24px))' : 'none',
+        date: fmtD(i, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }),
+        clicks: CLICKS[i].toLocaleString('en'), impr: IMPR[i].toLocaleString('en'), ctr: (CLICKS[i] / IMPR[i] * 100).toFixed(1) + '%' }; })(),
+      vitals: [['LCP', '2.1s', 1], ['INP', '180ms', 1], ['CLS', '0.12', 0]].map(([k, v, ok]) => ({ k, v, label: ok ? 'Good' : 'Needs improvement', bg: ok ? '#dcfce7' : '#fff4e5', fg: ok ? '#15803d' : '#b45309' })),
+      queries: [['consegna fiori roma', '412', '8,900', '4.6%', '3.2'], ['send flowers to rome', '288', '14,300', '2.0%', '7.8'], ['fioraio roma', '241', '6,100', '4.0%', '4.1'], ['flower delivery italy', '198', '5,400', '3.7%', '9.5'], ['rose rosse a domicilio roma', '156', '3,200', '4.9%', '2.9']].map(([q, c, i, ctr, p]) => ({ q, c, i, ctr, p })),
+      landing: [['/', '(Home)', '1,640', '41', '€2,870'], ['/bouquet/rosa-classica', '', '720', '28', '€1,960'], ['/consegna-fiori-roma', '', '610', '19', '€1,330'], ['/send-flowers-to-italy', '', '540', '22', '€1,780'], ['/bouquet/peonia-rosa', '', '380', '9', '€630']].map(([p, note, v, o, r]) => ({ p, note, v, o, r })),
+      keywords: KW.map(([kw, lang, pos, ch, page], i) => ({ kw, lang, page, pos: pos.toFixed(1), change: (ch > 0 ? '▲ ' : '▼ ') + Math.abs(ch).toFixed(1),
+        cColor: ch > 0 ? '#16a34a' : '#dc2626', lbg: lang === 'IT' ? '#eaf1fe' : '#f3f4f6', lfg: lang === 'IT' ? '#1d4ed8' : '#374151', spark: spark(pos, ch, i * 5) })),
+      kpis: [
+        { label: 'Revenue today', value: '€' + (totalToday + 1857).toLocaleString('en'), delta: '▲ 12% vs last Saturday', deltaColor: '#16a34a' },
+        { label: 'Orders today', value: String(orders.length + 28), delta: '31 from abroad · 14 countries', deltaColor: '#6b7280' },
+        { label: 'On-time (±15 min)', value: '97.4%', delta: '2 late this month · fees refunded', deltaColor: '#6b7280' },
+        { label: 'Photos to send', value: String(pending.length), delta: pending.length ? 'Oldest waiting 22 min' : 'All clear', deltaColor: pending.length ? '#b45309' : '#16a34a' }
+      ],
+      bars,
+      schedule: orders.filter(o => o.slot !== 'Next day').map(o => ({ ...deco(o), slot: o.slot })),
+      pendingPhotos: pending, noPending: pending.length === 0,
+      tableTitle: view === 'Overview' ? 'Latest orders' : `${rows.length} orders`,
+      statusFilters: ['All', 'Awaiting photo', 'Photo sent', 'Out for delivery', 'Delivered'].map(s => ({
+        label: s, n: s === 'All' ? orders.length : counts(s), active: status === s, bg: status === s ? '#eaf1fe' : '#fff', fg: status === s ? '#1d4ed8' : '#374151', pick: () => this.setState({ status: s }) })),
+      rows: rows.map(deco), emptyRows: rows.length === 0, thumbs: this.props.showThumbnails ?? true,
+      catalogue: products.map(([name, price, k, sold, stock], i) => {
+        const isOff = off[name] ?? false;
+        return { name, price, sold, stock: stock || '—', img: img(k, 500 + i, 500, 375),
+          stockColor: stock < 25 ? '#b45309' : '#111827',
+          state: isOff ? (name === 'Mimosa' ? 'Pre-order from Feb' : 'Hidden') : stock < 25 ? 'Low stock' : 'Live',
+          tagClass: isOff ? 'tag-neutral' : stock < 25 ? 'tag-accent' : 'tag-outline', opacity: isOff ? 0.6 : 1, pillBg: isOff ? '#f3f4f6' : stock < 25 ? '#fff4e5' : '#dcfce7', pillFg: isOff ? '#4b5563' : stock < 25 ? '#b45309' : '#15803d',
+          toggleLabel: isOff ? 'Publish' : 'Hide from shop',
+          toggle: () => this.setState(s => ({ off: { ...s.off, [name]: !isOff } })) };
+      }),
+      hasSelected: !!sel,
+      sel: sel ? { ...deco(sel), photoNote: selIdx === 0 ? 'not yet sent' : 'sent to sender on WhatsApp' } : {},
+      timeline: FLOW.map((f, i) => ({ label: f, rule: i <= selIdx ? '#2563eb' : '#e6e9f0', color: i <= selIdx ? '#1d4ed8' : '#9ca3af' })),
+      canAdvance: sel ? !!NEXT[sel.status] : false, advanceLabel: sel ? NEXT[sel.status] : '',
+      advance: () => sel && this.advance(sel.id),
+      close: () => this.setState({ selected: null }), stop: e => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>
