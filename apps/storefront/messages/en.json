@@ -1,0 +1,408 @@
+{
+  "announcement": {
+    "sameDay": "Same-day in {city} · order within {countdown}",
+    "photo": "Next-day across Italy · a photo of every bouquet before it leaves"
+  },
+  "nav": {
+    "occasions": "Occasions",
+    "bouquets": "Bouquets",
+    "plants": "Plants & gifts",
+    "sameDay": "Same-day",
+    "delivery": "Delivery"
+  },
+  "header": {
+    "search": "Search",
+    "account": "Account",
+    "cart": "Cart",
+    "cartCount": "{count, plural, =0 {Basket} one {# item} other {# items}}",
+    "switchToItalian": "Switch to Italian"
+  },
+  "hero": {
+    "eyebrow": "Hand-tied in {city} · delivered all over Italy",
+    "titleLead": "Send love to Italy,",
+    "titleAccent": "from anywhere",
+    "titleRest": "in the world.",
+    "subtitle": "Same-day at the exact minute you choose — and a photo of the real bouquet on WhatsApp before it leaves our workshop.",
+    "sendFlowers": "Send flowers",
+    "howItWorks": "How it works",
+    "trust": "All-in prices · delivery included · a photo before every delivery",
+    "caption": "Photographed in the workshop this morning."
+  },
+  "whereWhen": {
+    "deliverTo": "Deliver to",
+    "deliverPlaceholder": "Postcode · city",
+    "date": "Date",
+    "dateToday": "Today",
+    "timeInItaly": "Time in Italy",
+    "showBouquets": "Show bouquets",
+    "localNote": "{romeTime} in Italy is {localTime} in {localCity} — your time. We only show what we can really deliver then."
+  },
+  "promises": {
+    "heading": "Why senders abroad trust us",
+    "items": {
+      "photo": {
+        "title": "Photo before delivery",
+        "body": "See the real bouquet on WhatsApp and email."
+      },
+      "minute": {
+        "title": "The exact minute",
+        "body": "±15 minutes in {city}, or the time fee back."
+      },
+      "price": {
+        "title": "All-in prices",
+        "body": "Delivery included. Nothing added at checkout."
+      },
+      "florist": {
+        "title": "A florist on WhatsApp",
+        "body": "Real people, in English and Italian."
+      }
+    }
+  },
+  "occasions": {
+    "heading": "Shop by occasion",
+    "all": "All occasions"
+  },
+  "products": {
+    "heading": "The most sent this week",
+    "from": "from",
+    "sizes": "{count, plural, one {# size} other {# sizes}}",
+    "addToBasket": "Add to basket",
+    "added": "{name} added · delivery included",
+    "filters": {
+      "all": "All",
+      "Roses": "Roses",
+      "Seasonal": "Seasonal",
+      "Dried": "Dried"
+    }
+  },
+  "photoPromise": {
+    "eyebrow": "Our first promise",
+    "titleLead": "See it",
+    "titleAccent": "before",
+    "titleRest": "she does.",
+    "body": "When you can't be there, trust matters most. Our florist photographs the actual bouquet and sends it to you on WhatsApp and email — never a stock image. Reply if anything isn't right and we fix it before it leaves the workshop.",
+    "steps": {
+      "choose": {
+        "title": "Choose",
+        "body": "a bouquet, then a card, chocolates or a vase."
+      },
+      "pay": {
+        "title": "Pay in euro",
+        "body": "from any country — the total you see is the total you pay."
+      },
+      "receive": {
+        "title": "Receive the photo",
+        "body": "of the very bouquet she will hold, usually within the hour."
+      },
+      "delivered": {
+        "title": "Delivered at your minute",
+        "body": "and we message you the moment she has it."
+      }
+    }
+  },
+  "exactTime": {
+    "eyebrow": "Exact-time surprise · {city}",
+    "titleLead": "Midnight birthday?",
+    "titleAccent": "Choose the minute.",
+    "body": "Any 15-minute slot from 07:00 to 23:45, a 2-hour window, or a special moment. Our own riders arrive within ±15 minutes — or the time fee comes back automatically.",
+    "bookTime": "Book a time",
+    "selected": "Selected",
+    "booked": "Booked",
+    "zones": "{romeTime} Italy · {localTime} {localCity} · {nyTime} New York · {dhakaTime} Dhaka"
+  },
+  "reviews": {
+    "heading": "Reviewed by senders abroad",
+    "empty": "Reviews from verified senders will appear here."
+  },
+  "cities": {
+    "eyebrow": "We deliver to · same-day in {city}, next-day everywhere else",
+    "allItaly": "all of Italy"
+  },
+  "faq": {
+    "floristEyebrow": "Florist on call",
+    "floristTitleLead": "Not sure what to send?",
+    "floristTitleAccent": "Ask us.",
+    "floristBody": "Tell us who it's for and what she loves. A florist in {city} replies in English or Italian and can build something just for her.",
+    "whatsapp": "WhatsApp a florist",
+    "call": "Call us",
+    "questionsEyebrow": "Questions",
+    "items": {
+      "pay": {
+        "q": "Can I pay from outside Italy?",
+        "a": "Yes — prices are in euro and your bank converts. Cards, Apple Pay, Google Pay and PayPal work from any country."
+      },
+      "exact": {
+        "q": "How exact is “exact time”?",
+        "a": "In {city} our own riders arrive within 15 minutes either side of the time you book. If we're late, the time fee is refunded automatically."
+      },
+      "notHome": {
+        "q": "What if she's not home?",
+        "a": "You choose at checkout: leave it with a neighbour or the portiere, call her, or bring it back later. We always message you with what happened."
+      },
+      "look": {
+        "q": "Will it look like the photo?",
+        "a": "Flowers vary slightly by season; we always match style, colours and value — and you see the real bouquet in your photo before delivery."
+      },
+      "cutoff": {
+        "q": "What is the same-day cut-off?",
+        "a": "Order before the same-day cut-off shown at checkout for the recipient's area; later orders go out next day."
+      }
+    }
+  },
+  "catalog": {
+    "title": "Bouquets",
+    "subtitle": "All-in prices, delivery included. Same-day in {city}, next-day across Italy.",
+    "results": "{count, plural, one {# bouquet} other {# bouquets}}",
+    "occasionTitle": "{occasion}"
+  },
+  "delivery": {
+    "typeStandard": "Standard — any time that day",
+    "typeWindow": "2-hour window",
+    "typeExact": "Exact time (±15 min)",
+    "typeCourier": "Next-day courier",
+    "noSlots": "No same-day slots for this area — choose next-day courier.",
+    "zoneRome": "Same-day available in {city}",
+    "zoneNational": "Next-day boxed delivery by courier",
+    "checking": "Checking…",
+    "invalidPostcode": "Enter a valid Italian postcode."
+  },
+  "product": {
+    "tiers": {
+      "STANDARD": "Standard",
+      "PREMIUM": "Premium",
+      "LUXURY": "Luxury"
+    },
+    "chooseSize": "Choose a size",
+    "from": "from",
+    "unavailableToday": "Unavailable today",
+    "whatsIncluded": "What's included",
+    "addToBasket": "Add to basket",
+    "added": "{name} · {tier} added",
+    "cardMessage": "Card message",
+    "cardPlaceholder": "Write your message — it's handwritten on a card.",
+    "cardPreview": "Preview",
+    "addonsTitle": "Add a little extra",
+    "deliveryTitle": "Check delivery",
+    "postcode": "Recipient postcode",
+    "date": "Delivery date",
+    "timeType": "Delivery type",
+    "slot": "Choose a 15-minute slot",
+    "trustPhoto": "A photo before it leaves the workshop",
+    "trustAllIn": "All-in price, delivery included",
+    "trustOnTime": "On time, or the time fee back",
+    "detailsTitle": "Details",
+    "substitution": "Flowers vary by season; we always match style, colours and value.",
+    "relatedTitle": "You might also send"
+  },
+  "cart": {
+    "title": "Your basket",
+    "empty": "Your basket is empty.",
+    "emptyCta": "Browse bouquets",
+    "remove": "Remove",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "timeFee": "Time fee",
+    "deliveryLine": "Delivery",
+    "included": "Included",
+    "total": "Total",
+    "checkout": "Checkout",
+    "lineTitle": "{name} · {tier}"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "summary": "Order summary",
+    "back": "Back",
+    "next": "Continue",
+    "steps": {
+      "recipient": "Recipient",
+      "delivery": "Delivery",
+      "sender": "Your details",
+      "payment": "Payment"
+    },
+    "recipientName": "Recipient name",
+    "street": "Street address",
+    "postcode": "Postcode",
+    "addressType": "Address type",
+    "addressTypes": {
+      "home": "Home",
+      "office": "Office",
+      "hospital": "Hospital",
+      "funeralHome": "Funeral home",
+      "hotel": "Hotel"
+    },
+    "date": "Delivery date",
+    "timeType": "Delivery type",
+    "slot": "Time slot",
+    "senderLocalTime": "That's {localTime} your time ({localCity}).",
+    "senderName": "Your name",
+    "senderEmail": "Your email",
+    "terms": "I accept the terms of sale. I understand flowers are perishable goods, so the 14-day right of withdrawal does not apply once the order is accepted.",
+    "placeOrder": "Pay securely",
+    "testMode": "Test mode: no real Stripe key configured. Payment is simulated for this demo.",
+    "payWithStripe": "Payments processed by Stripe · ROMAFIORITA will appear on your statement.",
+    "simulatePay": "Pay (test)"
+  },
+  "confirmation": {
+    "title": "Order confirmed",
+    "thanks": "Thank you — your order {number} is confirmed.",
+    "photoNote": "We'll send a photo of the real bouquet before delivery.",
+    "track": "Track this order"
+  },
+  "track": {
+    "title": "Track order {number}",
+    "notFound": "We couldn't find that order.",
+    "photoPending": "The bouquet photo will appear here before delivery.",
+    "slot": "Delivery slot",
+    "status": {
+      "awaiting": "Awaiting photo",
+      "photo-sent": "Photo sent",
+      "approved": "Approved",
+      "out-for-delivery": "Out for delivery",
+      "delivered": "Delivered"
+    }
+  },
+  "pay": {
+    "title": "Pay for order {number}",
+    "summary": "Order summary",
+    "deliverTo": "Deliver to",
+    "slot": "Delivery",
+    "cardMessage": "Card message",
+    "total": "Total",
+    "expiresIn": "This secure link expires in {hours} hours.",
+    "pay": "Pay securely",
+    "secure": "Secure checkout · payments processed by Stripe.",
+    "descriptor": "ROMAFIORITA will appear on your statement.",
+    "genuineTitle": "How to check this is genuine",
+    "genuineBody": "This page is on romafiorita.com, our own domain. You can confirm the order number and amount on our verify page.",
+    "verifyLink": "Verify this order",
+    "paid": "Paid — thank you!",
+    "paidNote": "Your order is confirmed. We'll send a photo of the real bouquet before delivery.",
+    "expired": "This payment link has expired.",
+    "expiredCta": "Ask us for a new link on WhatsApp",
+    "cancelled": "This payment request was cancelled.",
+    "notFound": "We couldn't find this payment request.",
+    "estimate": "≈ {amount} — estimate only; your bank sets the final rate. Charged in EUR."
+  },
+  "verify": {
+    "title": "Verify an order",
+    "subtitle": "Enter the order number and the email the request was sent to.",
+    "orderNumber": "Order number",
+    "email": "Email",
+    "check": "Verify",
+    "genuine": "Genuine — this is a real Roma Fiorita order.",
+    "notGenuine": "We couldn't match that order number and email.",
+    "amount": "Amount",
+    "status": "Status"
+  },
+  "cookie": {
+    "message": "We use cookies for analytics only after you accept.",
+    "accept": "Accept",
+    "reject": "Reject"
+  },
+  "footer": {
+    "reminderLead": "Never forget",
+    "reminderAccent": "a birthday.",
+    "reminderPlaceholder": "Your email — we'll remind you 7 and 2 days before",
+    "remind": "Remind me",
+    "shop": "Shop",
+    "help": "Help",
+    "company": "Company",
+    "links": {
+      "occasions": "Occasions",
+      "bouquets": "Bouquets",
+      "plants": "Plants & gifts",
+      "deliveryInfo": "Delivery info",
+      "track": "Track an order",
+      "faq": "FAQ",
+      "contact": "Contact",
+      "about": "Our workshop",
+      "journal": "Journal",
+      "terms": "Terms of sale",
+      "privacy": "Privacy & cookies"
+    },
+    "rights": "Roma Fiorita"
+  },
+  "landing": {
+    "shopTitle": "Bouquets you can send today",
+    "rome": {
+      "eyebrow": "Same-day by our own riders",
+      "title": "Flower delivery in {city}",
+      "intro": "Order from anywhere in the world and we hand-deliver in {city} the same day — in 15-minute slots from 07:00 to 23:45, with a photo of the real bouquet before it leaves. All-in prices, delivery included.",
+      "areasTitle": "Neighbourhoods we cover"
+    },
+    "area": {
+      "title": "Flower delivery in {area}, {city}",
+      "intro": "Send fresh flowers to {area} in {city} today. Our riders deliver across the area in exact 15-minute windows, and you get a photo of the bouquet before it arrives."
+    },
+    "city": {
+      "title": "Flower delivery to {city}",
+      "intro": "Send flowers to {city} with next-day courier delivery across Italy. Boxed to arrive fresh, with all-in prices and delivery included."
+    },
+    "national": {
+      "eyebrow": "Delivery across Italy",
+      "title": "Send flowers to Italy, from anywhere",
+      "intro": "Same-day in Rome by our own riders, next-day everywhere else in Italy by courier. All-in prices, and a photo of the real bouquet before delivery.",
+      "citiesTitle": "Cities we deliver to"
+    }
+  },
+  "journal": {
+    "title": "Journal",
+    "intro": "Notes on flowers, the seasons in Rome, and sending love across borders.",
+    "empty": "No journal entries yet — check back soon."
+  },
+  "pages": {
+    "delivery": {
+      "title": "Delivery",
+      "lead": "All-in prices, delivery included. We send a photo of the real bouquet before it leaves — so you know exactly what arrives.",
+      "romeTitle": "Same-day in {city}",
+      "romeBody": "Our own riders deliver across {city} the same day, in exact 15-minute slots from 07:00 to 23:45. Choose Standard (any time that day), a 2-hour window, or an exact time — the window and exact-time fees are shown for your area at checkout.",
+      "nationalTitle": "Next-day across Italy",
+      "nationalBody": "Everywhere else in Italy, bouquets are boxed to arrive fresh and delivered the next day by courier. You pick the delivery date.",
+      "cutoffTitle": "Same-day cut-off",
+      "cutoffBody": "Order before the daily cut-off for {city} to get same-day delivery. The exact cut-off and any time fees for the recipient’s area are confirmed at checkout.",
+      "photoTitle": "A photo before it leaves",
+      "photoBody": "Before every delivery we send a photo of the finished bouquet to the sender by WhatsApp and email."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "lead": "Everything about ordering, delivery times and the photo-before-delivery promise."
+    },
+    "about": {
+      "title": "Our workshop",
+      "lead": "Roma Fiorita helps people abroad send flowers to loved ones in Italy — with the trust that the right bouquet arrives, on time.",
+      "body1": "We work with florists in Rome, deliver same-day with our own riders, and send a photo of the real bouquet before it leaves. Prices are all-in, with delivery included.",
+      "body2": "Outside Rome we deliver next-day across Italy by courier, boxed to arrive fresh.",
+      "trustTitle": "Why people trust us",
+      "trust1": "A photo of the real bouquet before delivery.",
+      "trust2": "All-in prices — delivery included, no surprises.",
+      "trust3": "On-time delivery, down to an exact 15-minute slot in Rome."
+    },
+    "contact": {
+      "title": "Contact us",
+      "lead": "A florist is on hand to help with your order.",
+      "noDetails": "Our contact details will appear here shortly. In the meantime, reach us through the channels below when available.",
+      "whatsapp": "Message us on WhatsApp",
+      "call": "Call us",
+      "emailLabel": "Email"
+    },
+    "legal": {
+      "termsTitle": "Terms of sale",
+      "privacyTitle": "Privacy policy",
+      "cookiesTitle": "Cookie policy",
+      "pending": "The full text is being finalised and will be published here before launch.",
+      "perishableTitle": "Perishable goods — right of withdrawal",
+      "perishableBody": "Because flowers are perishable goods made to order, the statutory 14-day right of withdrawal does not apply once an order is confirmed, in line with EU consumer law.",
+      "cookiesBody": "We load analytics cookies only after you accept them in the cookie banner. You can change your choice at any time."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "body": "The page you’re looking for doesn’t exist or has moved.",
+      "home": "Back to home"
+    },
+    "error": {
+      "title": "Something went wrong",
+      "body": "We couldn’t load this page. Please try again.",
+      "retry": "Try again"
+    }
+  }
+}

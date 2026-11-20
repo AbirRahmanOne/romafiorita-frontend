@@ -1,0 +1,408 @@
+{
+  "announcement": {
+    "sameDay": "In giornata a {city} · ordina entro {countdown}",
+    "photo": "Il giorno dopo in tutta Italia · una foto di ogni bouquet prima della partenza"
+  },
+  "nav": {
+    "occasions": "Occasioni",
+    "bouquets": "Bouquet",
+    "plants": "Piante e regali",
+    "sameDay": "In giornata",
+    "delivery": "Consegna"
+  },
+  "header": {
+    "search": "Cerca",
+    "account": "Account",
+    "cart": "Carrello",
+    "cartCount": "{count, plural, =0 {Carrello} one {# articolo} other {# articoli}}",
+    "switchToItalian": "Passa all'inglese"
+  },
+  "hero": {
+    "eyebrow": "Composti a mano a {city} · consegniamo in tutta Italia",
+    "titleLead": "Manda amore in Italia,",
+    "titleAccent": "da qualsiasi parte",
+    "titleRest": "del mondo.",
+    "subtitle": "In giornata, al minuto esatto che scegli — e una foto del bouquet reale su WhatsApp prima che lasci il nostro laboratorio.",
+    "sendFlowers": "Invia fiori",
+    "howItWorks": "Come funziona",
+    "trust": "Prezzi tutto incluso · consegna compresa · una foto prima di ogni consegna",
+    "caption": "Fotografato in laboratorio stamattina."
+  },
+  "whereWhen": {
+    "deliverTo": "Consegna a",
+    "deliverPlaceholder": "CAP · città",
+    "date": "Data",
+    "dateToday": "Oggi",
+    "timeInItaly": "Ora in Italia",
+    "showBouquets": "Mostra i bouquet",
+    "localNote": "Le {romeTime} in Italia sono le {localTime} a {localCity} — ora tua. Mostriamo solo ciò che possiamo davvero consegnare in quel momento."
+  },
+  "promises": {
+    "heading": "Perché chi invia dall'estero si fida di noi",
+    "items": {
+      "photo": {
+        "title": "Foto prima della consegna",
+        "body": "Vedi il bouquet reale su WhatsApp e per email."
+      },
+      "minute": {
+        "title": "Al minuto esatto",
+        "body": "±15 minuti a {city}, o ti rimborsiamo il supplemento orario."
+      },
+      "price": {
+        "title": "Prezzi tutto incluso",
+        "body": "Consegna compresa. Nulla aggiunto al pagamento."
+      },
+      "florist": {
+        "title": "Un fiorista su WhatsApp",
+        "body": "Persone vere, in italiano e inglese."
+      }
+    }
+  },
+  "occasions": {
+    "heading": "Per occasione",
+    "all": "Tutte le occasioni"
+  },
+  "products": {
+    "heading": "I più inviati questa settimana",
+    "from": "da",
+    "sizes": "{count, plural, one {# misura} other {# misure}}",
+    "addToBasket": "Aggiungi al carrello",
+    "added": "{name} aggiunto · consegna compresa",
+    "filters": {
+      "all": "Tutti",
+      "Roses": "Rose",
+      "Seasonal": "Di stagione",
+      "Dried": "Secchi"
+    }
+  },
+  "photoPromise": {
+    "eyebrow": "La nostra prima promessa",
+    "titleLead": "Guardalo",
+    "titleAccent": "prima",
+    "titleRest": "di lei.",
+    "body": "Quando non puoi esserci, la fiducia conta più di tutto. Il nostro fiorista fotografa il bouquet vero e te lo invia su WhatsApp e per email — mai un'immagine di repertorio. Rispondi se qualcosa non va e lo sistemiamo prima che parta dal laboratorio.",
+    "steps": {
+      "choose": {
+        "title": "Scegli",
+        "body": "un bouquet, poi un biglietto, cioccolatini o un vaso."
+      },
+      "pay": {
+        "title": "Paga in euro",
+        "body": "da qualsiasi paese — il totale che vedi è il totale che paghi."
+      },
+      "receive": {
+        "title": "Ricevi la foto",
+        "body": "del bouquet esatto che terrà in mano, di solito entro un'ora."
+      },
+      "delivered": {
+        "title": "Consegnato al tuo minuto",
+        "body": "e ti avvisiamo nell'istante in cui lo riceve."
+      }
+    }
+  },
+  "exactTime": {
+    "eyebrow": "Sorpresa al minuto esatto · {city}",
+    "titleLead": "Compleanno a mezzanotte?",
+    "titleAccent": "Scegli il minuto.",
+    "body": "Qualsiasi fascia di 15 minuti dalle 07:00 alle 23:45, una finestra di 2 ore o un momento speciale. I nostri rider arrivano entro ±15 minuti — o il supplemento orario torna indietro automaticamente.",
+    "bookTime": "Prenota un orario",
+    "selected": "Scelto",
+    "booked": "Occupato",
+    "zones": "{romeTime} Italia · {localTime} {localCity} · {nyTime} New York · {dhakaTime} Dhaka"
+  },
+  "reviews": {
+    "heading": "Recensito da chi invia dall'estero",
+    "empty": "Le recensioni dei mittenti verificati appariranno qui."
+  },
+  "cities": {
+    "eyebrow": "Consegniamo a · in giornata a {city}, il giorno dopo ovunque",
+    "allItaly": "tutta Italia"
+  },
+  "faq": {
+    "floristEyebrow": "Fiorista a disposizione",
+    "floristTitleLead": "Non sai cosa inviare?",
+    "floristTitleAccent": "Chiedi a noi.",
+    "floristBody": "Dicci per chi è e cosa ama. Un fiorista a {city} risponde in italiano o inglese e può creare qualcosa su misura per lei.",
+    "whatsapp": "Scrivi a un fiorista",
+    "call": "Chiamaci",
+    "questionsEyebrow": "Domande",
+    "items": {
+      "pay": {
+        "q": "Posso pagare dall'estero?",
+        "a": "Sì — i prezzi sono in euro e la tua banca converte. Carte, Apple Pay, Google Pay e PayPal funzionano da qualsiasi paese."
+      },
+      "exact": {
+        "q": "Quanto è preciso l'“orario esatto”?",
+        "a": "A {city} i nostri rider arrivano entro 15 minuti prima o dopo l'orario prenotato. Se siamo in ritardo, il supplemento orario viene rimborsato automaticamente."
+      },
+      "notHome": {
+        "q": "E se non è in casa?",
+        "a": "Scegli tu al pagamento: lasciarlo a un vicino o al portiere, chiamarla, o riportarlo più tardi. Ti avvisiamo sempre di com'è andata."
+      },
+      "look": {
+        "q": "Sarà come nella foto?",
+        "a": "I fiori variano un po' con la stagione; manteniamo sempre stile, colori e valore — e vedi il bouquet vero nella tua foto prima della consegna."
+      },
+      "cutoff": {
+        "q": "Qual è l'orario limite per la consegna in giornata?",
+        "a": "Ordina entro l'orario limite mostrato al pagamento per la zona del destinatario; gli ordini successivi partono il giorno dopo."
+      }
+    }
+  },
+  "catalog": {
+    "title": "Bouquet",
+    "subtitle": "Prezzi tutto incluso, consegna compresa. In giornata a {city}, il giorno dopo in tutta Italia.",
+    "results": "{count, plural, one {# bouquet} other {# bouquet}}",
+    "occasionTitle": "{occasion}"
+  },
+  "delivery": {
+    "typeStandard": "Standard — in qualsiasi momento del giorno",
+    "typeWindow": "Finestra di 2 ore",
+    "typeExact": "Orario esatto (±15 min)",
+    "typeCourier": "Corriere il giorno dopo",
+    "noSlots": "Nessuna fascia in giornata per questa zona — scegli il corriere per il giorno dopo.",
+    "zoneRome": "Consegna in giornata disponibile a {city}",
+    "zoneNational": "Consegna in scatola il giorno dopo con corriere",
+    "checking": "Verifica in corso…",
+    "invalidPostcode": "Inserisci un CAP italiano valido."
+  },
+  "product": {
+    "tiers": {
+      "STANDARD": "Standard",
+      "PREMIUM": "Premium",
+      "LUXURY": "Luxury"
+    },
+    "chooseSize": "Scegli una misura",
+    "from": "da",
+    "unavailableToday": "Non disponibile oggi",
+    "whatsIncluded": "Cosa include",
+    "addToBasket": "Aggiungi al carrello",
+    "added": "{name} · {tier} aggiunto",
+    "cardMessage": "Messaggio sul biglietto",
+    "cardPlaceholder": "Scrivi il tuo messaggio — verrà scritto a mano su un biglietto.",
+    "cardPreview": "Anteprima",
+    "addonsTitle": "Aggiungi qualcosa in più",
+    "deliveryTitle": "Verifica la consegna",
+    "postcode": "CAP del destinatario",
+    "date": "Data di consegna",
+    "timeType": "Tipo di consegna",
+    "slot": "Scegli una fascia di 15 minuti",
+    "trustPhoto": "Una foto prima che lasci il laboratorio",
+    "trustAllIn": "Prezzo tutto incluso, consegna compresa",
+    "trustOnTime": "In orario, o ti rimborsiamo il supplemento",
+    "detailsTitle": "Dettagli",
+    "substitution": "I fiori variano con la stagione; manteniamo sempre stile, colori e valore.",
+    "relatedTitle": "Potresti anche inviare"
+  },
+  "cart": {
+    "title": "Il tuo carrello",
+    "empty": "Il tuo carrello è vuoto.",
+    "emptyCta": "Sfoglia i bouquet",
+    "remove": "Rimuovi",
+    "quantity": "Quantità",
+    "subtotal": "Subtotale",
+    "timeFee": "Supplemento orario",
+    "deliveryLine": "Consegna",
+    "included": "Inclusa",
+    "total": "Totale",
+    "checkout": "Vai al pagamento",
+    "lineTitle": "{name} · {tier}"
+  },
+  "checkout": {
+    "title": "Pagamento",
+    "summary": "Riepilogo ordine",
+    "back": "Indietro",
+    "next": "Continua",
+    "steps": {
+      "recipient": "Destinatario",
+      "delivery": "Consegna",
+      "sender": "I tuoi dati",
+      "payment": "Pagamento"
+    },
+    "recipientName": "Nome del destinatario",
+    "street": "Indirizzo",
+    "postcode": "CAP",
+    "addressType": "Tipo di indirizzo",
+    "addressTypes": {
+      "home": "Casa",
+      "office": "Ufficio",
+      "hospital": "Ospedale",
+      "funeralHome": "Casa funeraria",
+      "hotel": "Hotel"
+    },
+    "date": "Data di consegna",
+    "timeType": "Tipo di consegna",
+    "slot": "Fascia oraria",
+    "senderLocalTime": "Sono le {localTime} ora tua ({localCity}).",
+    "senderName": "Il tuo nome",
+    "senderEmail": "La tua email",
+    "terms": "Accetto i termini di vendita. Comprendo che i fiori sono beni deperibili, quindi il diritto di recesso di 14 giorni non si applica una volta accettato l'ordine.",
+    "placeOrder": "Paga in sicurezza",
+    "testMode": "Modalità test: nessuna chiave Stripe reale configurata. Il pagamento è simulato per questa demo.",
+    "payWithStripe": "Pagamenti gestiti da Stripe · Sull'estratto conto apparirà ROMAFIORITA.",
+    "simulatePay": "Paga (test)"
+  },
+  "confirmation": {
+    "title": "Ordine confermato",
+    "thanks": "Grazie — il tuo ordine {number} è confermato.",
+    "photoNote": "Ti invieremo una foto del bouquet reale prima della consegna.",
+    "track": "Traccia questo ordine"
+  },
+  "track": {
+    "title": "Traccia l'ordine {number}",
+    "notFound": "Non abbiamo trovato questo ordine.",
+    "photoPending": "La foto del bouquet apparirà qui prima della consegna.",
+    "slot": "Fascia di consegna",
+    "status": {
+      "awaiting": "In attesa di foto",
+      "photo-sent": "Foto inviata",
+      "approved": "Approvato",
+      "out-for-delivery": "In consegna",
+      "delivered": "Consegnato"
+    }
+  },
+  "pay": {
+    "title": "Paga l'ordine {number}",
+    "summary": "Riepilogo ordine",
+    "deliverTo": "Consegna a",
+    "slot": "Consegna",
+    "cardMessage": "Messaggio sul biglietto",
+    "total": "Totale",
+    "expiresIn": "Questo link sicuro scade tra {hours} ore.",
+    "pay": "Paga in sicurezza",
+    "secure": "Pagamento sicuro · gestito da Stripe.",
+    "descriptor": "Sull'estratto conto apparirà ROMAFIORITA.",
+    "genuineTitle": "Come verificare che sia autentico",
+    "genuineBody": "Questa pagina è su romafiorita.com, il nostro dominio. Puoi confermare numero d'ordine e importo nella pagina di verifica.",
+    "verifyLink": "Verifica questo ordine",
+    "paid": "Pagato — grazie!",
+    "paidNote": "Il tuo ordine è confermato. Ti invieremo una foto del bouquet reale prima della consegna.",
+    "expired": "Questo link di pagamento è scaduto.",
+    "expiredCta": "Chiedici un nuovo link su WhatsApp",
+    "cancelled": "Questa richiesta di pagamento è stata annullata.",
+    "notFound": "Non abbiamo trovato questa richiesta di pagamento.",
+    "estimate": "≈ {amount} — solo una stima; il tasso finale lo applica la tua banca. Addebito in EUR."
+  },
+  "verify": {
+    "title": "Verifica un ordine",
+    "subtitle": "Inserisci il numero d'ordine e l'email a cui è stata inviata la richiesta.",
+    "orderNumber": "Numero d'ordine",
+    "email": "Email",
+    "check": "Verifica",
+    "genuine": "Autentico — è un vero ordine Roma Fiorita.",
+    "notGenuine": "Non abbiamo trovato questo numero d'ordine ed email.",
+    "amount": "Importo",
+    "status": "Stato"
+  },
+  "cookie": {
+    "message": "Usiamo i cookie per le statistiche solo dopo il tuo consenso.",
+    "accept": "Accetta",
+    "reject": "Rifiuta"
+  },
+  "footer": {
+    "reminderLead": "Non dimenticare mai",
+    "reminderAccent": "un compleanno.",
+    "reminderPlaceholder": "La tua email — ti avvisiamo 7 e 2 giorni prima",
+    "remind": "Avvisami",
+    "shop": "Negozio",
+    "help": "Aiuto",
+    "company": "Azienda",
+    "links": {
+      "occasions": "Occasioni",
+      "bouquets": "Bouquet",
+      "plants": "Piante e regali",
+      "deliveryInfo": "Info consegna",
+      "track": "Traccia un ordine",
+      "faq": "FAQ",
+      "contact": "Contatti",
+      "about": "Il nostro laboratorio",
+      "journal": "Journal",
+      "terms": "Termini di vendita",
+      "privacy": "Privacy e cookie"
+    },
+    "rights": "Roma Fiorita"
+  },
+  "landing": {
+    "shopTitle": "Bouquet che puoi inviare oggi",
+    "rome": {
+      "eyebrow": "In giornata con i nostri rider",
+      "title": "Consegna fiori a {city}",
+      "intro": "Ordina da qualsiasi parte del mondo e consegniamo a mano a {city} in giornata — in fasce di 15 minuti dalle 07:00 alle 23:45, con la foto del bouquet reale prima della partenza. Prezzi tutto incluso, consegna compresa.",
+      "areasTitle": "I quartieri che copriamo"
+    },
+    "area": {
+      "title": "Consegna fiori a {area}, {city}",
+      "intro": "Invia fiori freschi a {area}, a {city}, oggi stesso. I nostri rider consegnano in tutta la zona in fasce orarie esatte di 15 minuti, e ricevi la foto del bouquet prima che arrivi."
+    },
+    "city": {
+      "title": "Consegna fiori a {city}",
+      "intro": "Invia fiori a {city} con consegna tramite corriere il giorno successivo in tutta Italia. Confezionati per arrivare freschi, con prezzi tutto incluso e consegna compresa."
+    },
+    "national": {
+      "eyebrow": "Consegna in tutta Italia",
+      "title": "Invia fiori in Italia, da ovunque nel mondo",
+      "intro": "In giornata a Roma con i nostri rider, il giorno successivo ovunque in Italia tramite corriere. Prezzi tutto incluso e la foto del bouquet reale prima della consegna.",
+      "citiesTitle": "Le città in cui consegniamo"
+    }
+  },
+  "journal": {
+    "title": "Giornale",
+    "intro": "Appunti sui fiori, sulle stagioni di Roma e sull'inviare amore oltre i confini.",
+    "empty": "Ancora nessun articolo nel giornale — torna presto a trovarci."
+  },
+  "pages": {
+    "delivery": {
+      "title": "Consegna",
+      "lead": "Prezzi tutto incluso, consegna compresa. Inviamo una foto del bouquet reale prima della partenza — così sai esattamente cosa arriva.",
+      "romeTitle": "In giornata a {city}",
+      "romeBody": "I nostri rider consegnano in tutta {city} in giornata, in fasce esatte di 15 minuti dalle 07:00 alle 23:45. Scegli Standard (in qualsiasi momento della giornata), una finestra di 2 ore oppure un orario esatto — i costi della finestra e dell’orario esatto sono indicati per la tua zona al momento del pagamento.",
+      "nationalTitle": "Il giorno successivo in tutta Italia",
+      "nationalBody": "Ovunque altrove in Italia, i bouquet vengono confezionati per arrivare freschi e consegnati il giorno successivo tramite corriere. Scegli tu la data di consegna.",
+      "cutoffTitle": "Orario limite per la consegna in giornata",
+      "cutoffBody": "Ordina prima dell’orario limite giornaliero per {city} per ottenere la consegna in giornata. L’orario limite esatto ed eventuali costi orari per la zona del destinatario vengono confermati al momento del pagamento.",
+      "photoTitle": "Una foto prima della partenza",
+      "photoBody": "Prima di ogni consegna inviamo al mittente una foto del bouquet finito via WhatsApp ed email."
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "lead": "Tutto su ordini, tempi di consegna e la promessa della foto prima della consegna."
+    },
+    "about": {
+      "title": "Il nostro laboratorio",
+      "lead": "Roma Fiorita aiuta chi è all’estero a inviare fiori alle persone care in Italia — con la certezza che arrivi il bouquet giusto, in orario.",
+      "body1": "Collaboriamo con fioristi a Roma, consegniamo in giornata con i nostri rider e inviamo una foto del bouquet reale prima della partenza. I prezzi sono tutto incluso, con la consegna compresa.",
+      "body2": "Fuori Roma consegniamo il giorno successivo in tutta Italia tramite corriere, confezionati per arrivare freschi.",
+      "trustTitle": "Perché le persone si fidano di noi",
+      "trust1": "Una foto del bouquet reale prima della consegna.",
+      "trust2": "Prezzi tutto incluso — consegna compresa, nessuna sorpresa.",
+      "trust3": "Consegna puntuale, fino alla fascia esatta di 15 minuti a Roma."
+    },
+    "contact": {
+      "title": "Contattaci",
+      "lead": "Un fiorista è a disposizione per aiutarti con il tuo ordine.",
+      "noDetails": "I nostri recapiti compariranno qui a breve. Nel frattempo, contattaci tramite i canali qui sotto quando disponibili.",
+      "whatsapp": "Scrivici su WhatsApp",
+      "call": "Chiamaci",
+      "emailLabel": "Email"
+    },
+    "legal": {
+      "termsTitle": "Termini di vendita",
+      "privacyTitle": "Informativa sulla privacy",
+      "cookiesTitle": "Informativa sui cookie",
+      "pending": "Il testo completo è in fase di finalizzazione e sarà pubblicato qui prima del lancio.",
+      "perishableTitle": "Beni deperibili — diritto di recesso",
+      "perishableBody": "Poiché i fiori sono beni deperibili realizzati su ordinazione, il diritto di recesso legale di 14 giorni non si applica una volta confermato l’ordine, in conformità con la normativa europea a tutela dei consumatori.",
+      "cookiesBody": "Carichiamo i cookie di analisi solo dopo la tua accettazione nel banner dei cookie. Puoi modificare la tua scelta in qualsiasi momento."
+    },
+    "notFound": {
+      "title": "Pagina non trovata",
+      "body": "La pagina che cerchi non esiste o è stata spostata.",
+      "home": "Torna alla home"
+    },
+    "error": {
+      "title": "Qualcosa è andato storto",
+      "body": "Non siamo riusciti a caricare questa pagina. Riprova.",
+      "retry": "Riprova"
+    }
+  }
+}
